@@ -12,7 +12,7 @@ QPdfViewer is an `UI App Extension` for [Quasar Framework v1](https://v1.quasar-
 This work is currently in `beta` and there are expected changes while things get worked out. Your help with testing is greatly appreciated.
 
 # Info
-QPdfViewer allows you to have markdown in your web pages. You can either use the standard default slot or use the property `src` to define your markdown.
+QPdfViewer allows you to have PDF in your web pages.
 
 # Install
 To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
@@ -33,6 +33,7 @@ You can use `quasar describe QPdfViewer`
 Can be found [here](https://github.com/hawkeye64/quasar-app-extension-qpdfviewer).
 
 # Demo
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6fdc0110-233d-4173-af09-81b6613a782f/deploy-status)](https://app.netlify.com/sites/qpdfviewer/deploys)
 Can be found [here](https://qpdfviewer.netlify.com/#/).
 
 # Example Code
