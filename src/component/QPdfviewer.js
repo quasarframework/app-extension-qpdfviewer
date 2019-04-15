@@ -1,5 +1,4 @@
 import Vue from 'vue'
-// import slot from 'quasar/src/utils/slot.js'
 import ModelToggleMixin from 'quasar/src/mixins/model-toggle.js'
 
 export default Vue.extend({
@@ -21,18 +20,11 @@ export default Vue.extend({
 
   data () {
     return {
-      hashId: ''
+      hashId: 'q-pdfviewer-' + Math.random().toString(36).substr(2, 9)
     }
   },
 
-  created () {
-    this.hashId = this.__generateId()
-  },
-
   methods: {
-    __generateId () {
-      return 'q-pdfviewer-' + Math.random().toString(36).substr(2, 9)
-    },
     __renderObject (h) {
       return h('object', {
         class: this.innerContentClass,
@@ -44,7 +36,7 @@ export default Vue.extend({
           width: '100%',
           height: '100%'
         },
-        nativeOn: {
+        on: {
           onerror: this.__onError,
           onload: this.__onLoad
         }
@@ -56,9 +48,7 @@ export default Vue.extend({
 
     __renderIFrame (h) {
       return h('iframe', {
-        style: {
-          border: 'none'
-        },
+        staticClass: 'q-pdfviewer__iframe',
         attrs: {
           src: this.src,
           width: '100%',
@@ -71,35 +61,27 @@ export default Vue.extend({
     },
 
     __renderText (h) {
+      // TODO: ????
       return h('p', 'This browser does not support PDFs. Download the PDF to view it:', [
-        this.__renderLink(h)
+        h('a', {
+          attrs: {
+            href: this.src,
+            target: '_blank'
+          }
+        })
       ])
-    },
-
-    __renderLink (h) {
-      return h('a', {
-        attrs: {
-          href: this.src,
-          target: '_blank'
-        }
-      })
     }
   },
 
   render (h) {
-    // don't display
-    if (!this.value) {
-      return null
+    if (this.value === true && this.src !== void 0 && this.src.length > 0) {
+      return h('div', {
+        staticClass: 'q-pdfviewer',
+        class: this.contentClass,
+        style: this.contentStyle
+      }, [
+        this.__renderObject(h)
+      ])
     }
-    if (this.src === void 0 || this.src.length === 0) {
-      return null
-    }
-    return h('div', {
-      staticClass: 'q-pdfviewer',
-      class: this.contentClass,
-      style: this.contentStyle
-    }, [
-      this.__renderObject(h)
-    ])
   }
 })
