@@ -5,7 +5,7 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
-const extendConf = function (api, conf) {
+const extendConf = function (conf) {
   // make sure qpdfviewer boot file is registered
   conf.boot.push('~@quasar/quasar-app-extension-qpdfviewer/src/boot/qpdfviewer.js')
   console.log(` App Extension (qpdfviewer) Info: 'Adding qpdfviewer boot reference to your quasar.conf.js'`)
@@ -26,7 +26,5 @@ module.exports = function (api) {
   api.registerDescribeApi('QPdfviewer', './component/QPdfviewer.json')
 
   // extend quasar.conf
-  api.extendQuasarConf((conf) => {
-    extendConf(api, conf)
-  })
+  api.extendQuasarConf(extendConf)
 }
