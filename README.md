@@ -30,11 +30,10 @@ quasar ext remove @quasar/qpdfviewer
 You can use `quasar describe QPdfViewer`
 
 # Test Project
-Can be found [here](https://github.com/hawkeye64/quasar-app-extension-qpdfviewer).
+In **demo** folder of **app-extension-qpdfviewer**.
 
 # Demo
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6fdc0110-233d-4173-af09-81b6613a782f/deploy-status)](https://app.netlify.com/sites/qpdfviewer/deploys)
-Can be found [here](https://qpdfviewer.netlify.com/#/).
+Can be found [here](https://quasarframework.github.io/app-extension-qpdfviewer/demo/dist/spa/#/).
 
 # Example Code
 Be sure to check out the Test Project for more examples.
