@@ -59,7 +59,8 @@ module.exports = function (ctx) {
 
     build: {
       scopeHoisting: true,
-      // vueRouterMode: 'history',
+      vueRouterMode: 'history',
+      publicPath: 'app-extension-qcalendar',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
