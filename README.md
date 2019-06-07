@@ -33,8 +33,8 @@ You can use `quasar describe QPdfViewer`
 In **demo** folder of **app-extension-qpdfviewer**.
 
 # Demo
-Can be found [here](https://quasarframework.github.io/app-extension-qpdfviewer).
-c
+Can be found [here](https://quasarframework.github.io/app-extension-qpdfviewer)
+
 # Example Code
 Be sure to check out the Test Project for more examples.
 ```
