@@ -60,7 +60,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath: 'app-extension-qcalendar',
+      publicPath: 'app-extension-qpdfviewer',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
