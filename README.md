@@ -103,3 +103,6 @@ NOTE:
 | inner-content-style | [String, Object, Array] | Style definitions to be attributed to the PDF object |
 
 QPdfViewer has no events or slots.
+
+# Donate
+If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
