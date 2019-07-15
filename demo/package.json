@@ -13,14 +13,14 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.1.4",
-    "quasar": "^1.0.4"
+    "@quasar/extras": "^1.2.0",
+    "quasar": "^1.0.5"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.4",
     "@quasar/quasar-app-extension-qpdfviewer": "file:../.",
     "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.2",
     "eslint": "^6.0.1",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-vue": "^5.2.3"
