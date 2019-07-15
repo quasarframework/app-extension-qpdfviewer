@@ -97,6 +97,8 @@ NOTE:
 | value | Boolean | Use v-model to toggle visiblity |
 | src | String | Path to the PDF source |
 | error-string | String | Set this if you wish to change from the default error string |
+| load | Function | The function to be called when the pdf document has been loaded |
+| error | Function | The function to be called when the pdf document has an error |
 | content-class | [String, Object, Array] | Style definitions to be attributed to the PDF container |
 | content-style | [String, Object, Array] | Style definitions to be attributed to the PDF container |
 | inner-content-class | [String, Object, Array] | Style definitions to be attributed to the PDF object |

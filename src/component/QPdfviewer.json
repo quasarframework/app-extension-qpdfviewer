@@ -16,6 +16,20 @@
       "default": "This browser does not support PDFs. Download the PDF to view it:",
       "examples": [ "Download the PDF to view it:" ]
     },
+    "load": {
+      "type": "Function",
+      "desc": "The function to be called when the pdf document has been loaded",
+      "examples": [
+        "@load=\"onLoad\""
+      ]
+    },
+    "error": {
+      "type": "Function",
+      "desc": "The function to be called when the pdf document has an error",
+      "examples": [
+        "@error=\"onError\""
+      ]
+    },
     "content-class": {
       "type": [ "Array", "String", "Object" ],
       "desc": "Class definitions to be attributed to the PDF container",
