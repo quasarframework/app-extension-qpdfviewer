@@ -12,6 +12,8 @@ export default Vue.extend({
       type: String,
       default: 'This browser does not support PDFs. Download the PDF to view it:'
     },
+    load: Function,
+    error: Function,
     contentStyle: [String, Object, Array],
     contentClass: [String, Object, Array],
     innerContentStyle: [String, Object, Array],
@@ -37,8 +39,8 @@ export default Vue.extend({
           height: '100%'
         },
         on: {
-          onerror: this.__onError,
-          onload: this.__onLoad
+          onerror: this.error,
+          onload: this.load
         }
       }, [
         // browser object not supported, try iframe
@@ -83,5 +85,6 @@ export default Vue.extend({
         this.__renderObject(h)
       ])
     }
+    return ''
   }
 })
