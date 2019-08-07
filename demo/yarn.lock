@@ -936,7 +936,7 @@
   integrity sha512-DUo4KRayuwnMwzRK4vYjd6q6e6sGOkt5moD2Lz/q5PiPqvEjoNeQd9vcNPTqpSjWk7AUDVW4meDR2ThHyQMzAQ==
 
 "@quasar/quasar-app-extension-qpdfviewer@file:..":
-  version "1.0.0-beta.2"
+  version "1.0.0-beta.3"
 
 "@types/events@*":
   version "3.0.0"
