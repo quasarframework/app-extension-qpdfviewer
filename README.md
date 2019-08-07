@@ -9,7 +9,7 @@ QPdfViewer (@quasar/qpdfviewer)
 
 QPdfViewer is an `UI App Extension` for [Quasar Framework v1](https://v1.quasar-framework.org/). It will not work with legacy versions of Quasar Framework.
 
-This work is currently in `beta` and there are expected changes while things get worked out. Your help with testing is greatly appreciated.
+This work is currently in `beta` and there are expected changes while things get worked out. Your help with testing is greatly appreciated. Suggestions and PRs welcomed.
 
 # Info
 QPdfViewer allows you to have PDF in your web pages.
@@ -83,6 +83,28 @@ export default {
 }
 </style>
 
+```
+
+Using blob data:
+```js
+fetchPDF (payload) {
+  this.$axios.post('/my/url/to/pdf', payload, { responseType: 'blob' }).then(res => {
+    // create the blob
+    const blob = new Blob([res.data], { type: res.data.type })
+    // set reactive variable
+    pdfSrc = window.URL.createObjectURL(blob)
+  }).catch(err => {
+    this.$q.notify({
+      message: 'Error downloading PDF',
+      type: 'negative',
+      textColor: 'white',
+      color: 'negative',
+      icon: 'error',
+      closeBtn: 'close',
+      position: 'top'
+    })
+  })
+}
 ```
 
 ---
