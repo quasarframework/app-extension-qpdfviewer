@@ -1749,7 +1749,7 @@ var validateFileURL;
           protocol = _ref8.protocol;
 
       if (origin !== viewerOrigin && protocol !== 'blob:') {
-        throw new Error('file origin does not match viewer\'s');
+        // throw new Error('file origin does not match viewer\'s');
       }
     } catch (ex) {
       var message = ex && ex.message;
