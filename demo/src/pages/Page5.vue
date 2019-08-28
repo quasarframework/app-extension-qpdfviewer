@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-beween relative-position" style="min-height: calc(100vh - 98px);">
-    <container v-for="(source, index) in sources" :key="index" :src="source" />
+    <container v-for="(source, index) in sources" :key="index" :src="source" :type="index % 2 ? 'pdfjs' : 'html5'" />
   </div>
 </template>
 
@@ -15,10 +15,10 @@ export default {
   data () {
     return {
       sources: [
-        'https://www.orimi.com/pdf-test.pdf',
-        'https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf',
-        'https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf',
-        'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf'
+        '/statics/pdf/pdf-test.pdf',
+        '/statics/pdf/c4611_sample_explain.pdf',
+        '/statics/pdf/pdf_open_parameters.pdf',
+        '/statics/pdf/gre_research_validity_data.pdf'
       ]
     }
   }

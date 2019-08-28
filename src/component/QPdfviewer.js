@@ -8,6 +8,11 @@ export default Vue.extend({
 
   props: {
     src: String,
+    type: {
+      type: String,
+      default: 'html5',
+      validator: v => ['html5', 'pdfjs']
+    },
     errorString: {
       type: String,
       default: 'This browser does not support PDFs. Download the PDF to view it:'
@@ -39,8 +44,8 @@ export default Vue.extend({
           height: '100%'
         },
         on: {
-          onerror: this.error,
-          onload: this.load
+          error: this.error ? this.error : '',
+          load: this.load ? this.load : ''
         }
       }, [
         // browser object not supported, try iframe
@@ -55,6 +60,18 @@ export default Vue.extend({
           src: this.src,
           width: '100%',
           height: '100%'
+        }
+      }, [
+        // iframe not supported either, give user a link to download
+        this.__renderText(h)
+      ])
+    },
+
+    __renderIFramePDFJS (h) {
+      return h('iframe', {
+        staticClass: 'q-pdfviewer__iframe',
+        attrs: {
+          src: 'statics/pdfjs/web/viewer.html?file=' + this.src
         }
       }, [
         // iframe not supported either, give user a link to download
@@ -82,7 +99,7 @@ export default Vue.extend({
         class: this.contentClass,
         style: this.contentStyle
       }, [
-        this.__renderObject(h)
+        this.$q.platform.is.electron || this.type === 'pdfjs' ? this.__renderIFramePDFJS(h) : this.__renderObject(h)
       ])
     }
     return ''
