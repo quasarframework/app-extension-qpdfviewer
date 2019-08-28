@@ -62,6 +62,20 @@ export default Vue.extend({
       ])
     },
 
+    __renderIFramePDFJS (h) {
+      return h('iframe', {
+        staticClass: 'q-pdfviewer__iframe',
+        attrs: {
+          src: 'statics/pdfjs/web/viewer.html?file='+this.src,
+          width: '100%',
+          height: '100%'
+        }
+      }, [
+        // iframe not supported either, give user a link to download
+        this.__renderText(h)
+      ])
+    },
+
     __renderText (h) {
       // TODO: ????
       return h('p', 'This browser does not support PDFs. Download the PDF to view it:', [
@@ -82,7 +96,7 @@ export default Vue.extend({
         class: this.contentClass,
         style: this.contentStyle
       }, [
-        this.__renderObject(h)
+        this.$q.platform.is.electron ? this.__renderIFramePDFJS(h) : this.__renderObject(h)
       ])
     }
     return ''
