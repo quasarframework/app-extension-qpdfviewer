@@ -5,9 +5,6 @@
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
 
-const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin')
-
 const extendConf = function (conf) {
   // make sure qpdfviewer boot file is registered
   conf.boot.push('~@quasar/quasar-app-extension-qpdfviewer/src/boot/qpdfviewer.js')
@@ -21,19 +18,6 @@ const extendConf = function (conf) {
   console.log(` App Extension (qpdfviewer) Info: 'Adding pdfviewer.styl css reference to your quasar.conf.js'`)
 }
 
-const extendWebpack = function (cfg, { isClient, isServer }, api) {
-  if(api.ctx.modeName === "electron") {
-    cfg.plugins.push(
-      new CopyPlugin([
-        {
-          from: path.resolve(__dirname, 'lib', 'pdfjs'),
-          to: 'statics/pdfjs'
-        }
-      ])
-    )
-  }
-}
-
 module.exports = function (api) {
   // quasar compatibility check
   api.compatibleWith('@quasar/app', '^1.0.0')
@@ -43,7 +27,4 @@ module.exports = function (api) {
 
   // extend quasar.conf
   api.extendQuasarConf(extendConf)
-
-  // extend webpack
-  api.extendWebpack(extendWebpack)
 }
