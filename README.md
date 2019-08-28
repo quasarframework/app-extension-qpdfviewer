@@ -111,7 +111,7 @@ fetchPDF (payload) {
 
 ---
 NOTE:
-  QPdfviewer now has support for native HTML5 PDF viewer and for PDFJS. Use `type="html5"` or `type="pdfjs"`. If you previously has this app extension, and want to use the pdfjs, you will need to reinstall it.
+  QPdfviewer now has support for native HTML5 PDF viewer and for PDFJS. Use `type="html5"` or `type="pdfjs"`. If you previously has this app extension, and want to use the pdfjs, you will need to re-install it. An update will not get the PDFJS for you. If you update, you can run `quasar ext invoke @quasar/qpdfviewer` instead of re-installing.
 
 ---
 NOTE:
