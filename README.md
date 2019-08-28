@@ -114,14 +114,10 @@ NOTE:
   QPdfviewer now has support for native HTML5 PDF viewer and for PDFJS. Use `type="html5"` or `type="pdfjs"`. If you previously has this app extension, and want to use the pdfjs, you will need to reinstall it.
 
 ---
-
----
 NOTE:
   QPdfviewer uses the `<object>` tag for displaying the PDF (`type="html5"` only). Should the browser not support this, the fallback is to use an `<iframe>`. And, should this also not be supported by the browser, then some text will be displayed with a link to the PDF so the user can download it for off-line viewing.
 
   When using PDFJS, the PDF is always displayed in an `<iframe>`.
-
----
 
 ---
 NOTE:
