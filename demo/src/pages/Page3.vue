@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       show: true,
-      src: 'https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf'
+      src: '/statics/pdf/pdf_open_parameters.pdf'
     }
   }
 }
