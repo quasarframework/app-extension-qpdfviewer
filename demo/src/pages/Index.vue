@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       show: true,
-      src: 'https://www.orimi.com/pdf-test.pdf'
+      src: '/statics/pdf/pdf-test.pdf'
     }
   }
 }

@@ -3,6 +3,7 @@
     <q-pdfviewer
       v-model="show"
       :src="src"
+      type="pdfjs"
       content-class="absolute"
     />
   </q-page>
@@ -15,7 +16,7 @@ export default {
   data () {
     return {
       show: true,
-      src: 'https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf'
+      src: '/statics/pdf/c4611_sample_explain.pdf'
     }
   }
 }

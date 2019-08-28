@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       show: true,
-      src: 'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf'
+      src: '/statics/pdf/gre_research_validity_data.pdf'
     }
   }
 }
