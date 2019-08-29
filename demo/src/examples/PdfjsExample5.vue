@@ -3,7 +3,7 @@
     <div v-for="(source, index) in sources" :key="index" class="q-pa-xs pdf-container" style="wifth: 50%;">
       <q-pdfviewer
         v-model="show"
-        :src="source"
+        :src="getLocation(source)"
         type="pdfjs"
       />
     </div>
@@ -21,6 +21,15 @@ export default {
         'statics/pdf/pdf_open_parameters.pdf',
         'statics/pdf/gre_research_validity_data.pdf'
       ]
+    }
+  },
+
+  methods: {
+    // do some funky stuff because this site is
+    // using history mode with publicPath, and it makes
+    // pdfjs more comfortable using full urls
+    getLocation (source) {
+      return location.href + '../' + source
     }
   }
 }
