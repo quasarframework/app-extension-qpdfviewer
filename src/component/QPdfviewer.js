@@ -33,8 +33,6 @@ export default Vue.extend({
 
   methods: {
     __renderObject (h) {
-      console.log('process.env:', process.env)
-      console.log('location:', location)
       return h('object', {
         class: this.innerContentClass,
         style: this.innerContentStyle,

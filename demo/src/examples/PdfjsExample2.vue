@@ -3,7 +3,7 @@
     <q-pdfviewer
       v-model="show"
       type="pdfjs"
-      :src="src"
+      :src="getLocation(src)"
       content-class="absolute"
     />
   </q-page>
@@ -17,6 +17,15 @@ export default {
     return {
       show: true,
       src: 'statics/pdf/c4611_sample_explain.pdf'
+    }
+  },
+
+  methods: {
+    // do some funky stuff because this site is
+    // using history mode with publicPath, and it makes
+    // pdfjs more comfortable using full urls
+    getLocation (source) {
+      return location.href + '../' + source
     }
   }
 }
