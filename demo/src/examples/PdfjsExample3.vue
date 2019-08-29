@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       show: true,
-      src: 'statics/pdf/pdf_open_parameters.pdf'
+      src: '../statics/pdf/pdf_open_parameters.pdf'
     }
   }
 }
