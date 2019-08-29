@@ -14,7 +14,7 @@ export default {
   data () {
     return {
       show: true,
-      src: '/statics/pdf/c4611_sample_explain.pdf'
+      src: 'statics/pdf/c4611_sample_explain.pdf'
     }
   }
 }
