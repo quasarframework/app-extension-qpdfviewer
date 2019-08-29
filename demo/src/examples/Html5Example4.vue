@@ -14,7 +14,7 @@ export default {
   data () {
     return {
       show: true,
-      src: '/statics/pdf/gre_research_validity_data.pdf'
+      src: 'statics/pdf/gre_research_validity_data.pdf'
     }
   }
 }

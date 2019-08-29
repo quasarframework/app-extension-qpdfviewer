@@ -43,7 +43,7 @@ Working with QPdfviewer can be very minimal:
 ```html
   <q-pdfviewer
     v-model="visible"
-    src="/statics/pdf/c4611_sample_explain.pdf"
+    src="statics/pdf/c4611_sample_explain.pdf"
     type="html5"
   />
 ```
@@ -51,7 +51,7 @@ or
 ```html
   <q-pdfviewer
     v-model="visible"
-    src="/statics/pdf/c4611_sample_explain.pdf"
+    src="statics/pdf/c4611_sample_explain.pdf"
     type="pdfjs"
   />
 ```
