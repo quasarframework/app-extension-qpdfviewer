@@ -1,3 +1,11 @@
 {
-  "@quasar/qpdfviewer": {}
+  "@quasar/qpdfviewer": {},
+  "@quasar/qpublish": {},
+  "@quasar/qribbon": {},
+  "@quasar/qmarkdown": {},
+  "qautomate": {
+    "quasarConfFixMode": "automatic",
+    "sort": true
+  },
+  "@quasar/colorize": {}
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-beween relative-position" style="min-height: calc(100vh - 98px);">
-    <container v-for="(source, index) in sources" :key="index" :src="source" :type="index % 2 ? 'pdfjs' : 'html5'" />
+    <container v-for="(source, index) in sources" :key="index" :src="source" type="pdfjs" />
   </div>
 </template>
 
@@ -24,6 +24,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

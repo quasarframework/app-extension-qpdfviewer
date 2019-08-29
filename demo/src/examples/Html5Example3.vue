@@ -2,8 +2,8 @@
   <q-page class="flex flex-center">
     <q-pdfviewer
       v-model="show"
+      type="html5"
       :src="src"
-      type="pdfjs"
       content-class="absolute"
     />
   </q-page>
@@ -11,16 +11,11 @@
 
 <script>
 export default {
-  // name: 'PageName',
-
   data () {
     return {
       show: true,
-      src: '/statics/pdf/c4611_sample_explain.pdf'
+      src: '/statics/pdf/pdf_open_parameters.pdf'
     }
   }
 }
 </script>
-
-<style>
-</style>

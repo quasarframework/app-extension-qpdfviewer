@@ -2,6 +2,7 @@
   <q-page class="flex flex-center">
     <q-pdfviewer
       v-model="show"
+      type="pdfjs"
       :src="src"
       content-class="absolute"
     />
@@ -20,6 +21,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

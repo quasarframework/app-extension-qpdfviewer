@@ -2,6 +2,7 @@
   <q-page class="flex flex-center">
     <q-pdfviewer
       v-model="show"
+      type="pdfjs"
       :src="src"
       content-class="absolute"
     />
@@ -15,11 +16,8 @@ export default {
   data () {
     return {
       show: true,
-      src: '/statics/pdf/gre_research_validity_data.pdf'
+      src: '/statics/pdf/c4611_sample_explain.pdf'
     }
   }
 }
 </script>
-
-<style>
-</style>
