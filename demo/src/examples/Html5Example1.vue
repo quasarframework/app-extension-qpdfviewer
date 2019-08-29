@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       show: true,
-      src: '../statics/pdf/pdf-test.pdf'
+      src: 'statics/pdf/pdf-test.pdf'
     }
   }
 }

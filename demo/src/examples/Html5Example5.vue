@@ -13,10 +13,10 @@ export default {
   data () {
     return {
       sources: [
-        '../statics/pdf/pdf-test.pdf',
-        '../statics/pdf/c4611_sample_explain.pdf',
-        '../statics/pdf/pdf_open_parameters.pdf',
-        '../statics/pdf/gre_research_validity_data.pdf'
+        'statics/pdf/pdf-test.pdf',
+        'statics/pdf/c4611_sample_explain.pdf',
+        'statics/pdf/pdf_open_parameters.pdf',
+        'statics/pdf/gre_research_validity_data.pdf'
       ]
     }
   }
