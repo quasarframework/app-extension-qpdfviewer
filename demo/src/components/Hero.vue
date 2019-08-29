@@ -4,7 +4,7 @@
       <div class="text-h1 project-name">QPdfviewer</div>
       <div class="text-h2 project-tagline">PDF Viewer for SPA, SSR and Electron</div>
       <div class="byline">Created and maintained by Jeff Galbraith</div>
-      <q-btn type="a" href="https://github.com/quasarframework/app-extension-qwindow" target="_blank" class="btn" label="View on GitHub" no-caps flat/>
+      <q-btn type="a" href="https://github.com/quasarframework/app-extension-qpdfviewer" target="_blank" class="btn" label="View on GitHub" no-caps flat/>
       <q-btn to="/docs" class="btn" label="Docs" no-caps flat/>
       <q-btn to="/examples" class="btn" label="Examples" no-caps flat/>
       <!-- <q-btn to="/demo" class="btn" label="Interactive Demo" no-caps flat/> -->
