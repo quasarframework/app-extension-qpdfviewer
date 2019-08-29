@@ -29,7 +29,12 @@ export default {
     // using history mode with publicPath, and it makes
     // pdfjs more comfortable using full urls
     getLocation (source) {
-      return location.href + '../' + source
+      let url = location.href
+      if (location.href[location.href.length - 1] !== '/') {
+        url += '/'
+      }
+      url += '../' + source
+      return url
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "name": "quasar-app-extension-pdfviewer",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "QPdfviewer Docs and Examples",
+  "productName": "QPdfviewer docs/examples",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Jeff Galbraith <jeff.galbraith@xendra.com>",
   "private": true,
