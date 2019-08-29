@@ -10,6 +10,13 @@
       "desc": "Source path to the PDF",
       "examples": ["https://www.orimi.com/pdf-test.pdf"]
     },
+    "type": {
+      "type": "String",
+      "desc": "The type of pdf viewer engine to use",
+      "values": ["html5", "pdfjs"],
+      "default": "html5",
+      "examples": ["type=\"html5\""]
+    },
     "error-string": {
       "type": "String",
       "desc": "Used to display an error string should all efforts fail to open the PDF",
