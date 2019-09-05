@@ -3,7 +3,7 @@
     <div v-for="(source, index) in sources" :key="index" class="q-pa-xs pdf-container" style="wifth: 50%;">
       <q-pdfviewer
         v-model="show"
-        :src="getLocation(source)"
+        :src="updatedSrc(source)"
         type="pdfjs"
       />
     </div>
@@ -35,6 +35,12 @@ export default {
       }
       url += '../' + source
       return url
+    },
+    updatedSrc (src) {
+      if (process.env.MODE === 'electron') {
+        return '/' + src
+      }
+      return this.getLocation(src)
     }
   }
 }

@@ -3,7 +3,7 @@
     <q-pdfviewer
       v-model="show"
       type="pdfjs"
-      :src="getLocation(src)"
+      :src="updatedSrc"
       content-class="absolute"
     />
   </q-page>
@@ -31,6 +31,14 @@ export default {
       }
       url += '../' + source
       return url
+    }
+  },
+  computed: {
+    updatedSrc () {
+      if (process.env.MODE === 'electron') {
+        return '/' + this.src
+      }
+      return this.getLocation(this.src)
     }
   }
 }

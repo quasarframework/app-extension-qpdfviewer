@@ -57,7 +57,7 @@ or
 ```
 
 # PDFjs
-The PDFjs engine is a bit buggy. It's been found that it works best if you can provide a full URL instead of a relative URL.
+The PDFjs engine is a bit buggy. It's been found that it works best if you can provide a full URL instead of a relative URL. Or, the first character of your URL path **must** start with a `/`. So instead of `statics/my-pdf-file.pdf` use `/statics/my-pdf-file.pdf`.
 
 # Blobs
 If you want to load a PDF as a blob, you can do it like this:
