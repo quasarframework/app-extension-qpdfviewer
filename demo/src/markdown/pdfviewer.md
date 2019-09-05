@@ -55,3 +55,45 @@ or
     type="pdfjs"
   />
 ```
+
+# PDFjs
+The PDFjs engine is a bit buggy. It's been found that it works best if you can provide a full URL instead of a relative URL.
+
+# Blobs
+If you want to load a PDF as a blob, you can do it like this:
+
+```js
+fetchPDF (payload) {
+  this.$axios.post('/inpatientPDFs/snr/download', payload, { responseType: 'blob' }).then(res => {
+    // console.log('am i downloading?', res)
+    const blob = new Blob([res.data], { type: res.data.type })
+    const url = window.URL.createObjectURL(blob)
+    pdfSrc = url // where pdfSrc is used in the :src parameter of the qpdfviewer
+  }).catch(err => {
+    console.log('or do i have an error?', err) // TODO beef up this
+    this.$q.notify({ message: 'Error downloading PDF', type: 'negative', textColor: 'white', color: 'negative', icon: 'error', closeBtn: 'close', position: 'top' })
+  })
+}
+```
+
+# Blob issues with Android
+There are some [known issues](https://stackoverflow.com/questions/40750143/android-url-createobjecturl-does-not-work-properly-failed-to-load-because-no-s) with creating blobs on an Android. This is the work-around:
+
+```js
+let url = (window.URL || window.webkitURL || window || {}).createObjectURL(blob)
+// workaround for mobile playback, where it didn't work on chrome/android.
+// fetch blob at url using xhr, and use url generated from that blob.
+// see issue: https://code.google.com/p/chromium/issues/detail?id=227476
+// thanks, gbrlg
+var xhr = new XMLHttpRequest()
+xhr.open('GET', url, true)
+xhr.responseType = 'blob'
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status == 200) {
+    var url = (window.URL || window.webkitURL || window || {}).createObjectURL(xhr.response)
+
+    // now url is ready
+  }
+}
+xhr.send()
+```
