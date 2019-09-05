@@ -8,20 +8,24 @@
     "src": {
       "type": "String",
       "desc": "Source path to the PDF",
-      "examples": ["https://www.orimi.com/pdf-test.pdf"]
+      "examples": [
+        "src=\"https://www.orimi.com/pdf-test.pdf\""
+      ]
     },
     "type": {
       "type": "String",
       "desc": "The type of pdf viewer engine to use",
       "values": ["html5", "pdfjs"],
       "default": "html5",
-      "examples": ["type=\"html5\""]
+      "examples": [
+        "type=\"html5\""
+      ]
     },
     "error-string": {
       "type": "String",
       "desc": "Used to display an error string should all efforts fail to open the PDF",
       "default": "This browser does not support PDFs. Download the PDF to view it:",
-      "examples": [ "Download the PDF to view it:" ]
+      "examples": [ "error-string=\"Download the PDF to view it\"" ]
     },
     "load": {
       "type": "Function",
@@ -41,7 +45,7 @@
       "type": [ "Array", "String", "Object" ],
       "desc": "Class definitions to be attributed to the PDF container",
       "examples": [
-        "my-special-class",
+        "content-class=\"my-special-class\"",
         ":content-class=\"{ 'my-special-class': <condition> }\""
       ]
     },
@@ -49,7 +53,7 @@
       "type": [ "Array", "String", "Object" ],
       "desc": "Style definitions to be attributed to the PDF container",
       "examples": [
-        "background-color: #ff0000",
+        "content-style=\"background-color: #ff0000\"",
         ":content-style=\"{ backgroundColor: '#ff0000' }\""
       ]
     },
@@ -57,16 +61,16 @@
       "type": [ "Array", "String", "Object" ],
       "desc": "Class definitions to be attributed to the PDF object",
       "examples": [
-        "my-special-class",
-        ":content-class=\"{ 'my-special-class': <condition> }\""
+        "inner-content-class=\"my-special-class\"",
+        ":inner-content-class=\"{ 'my-special-class': <condition> }\""
       ]
     },
     "inner-content-style": {
       "type": [ "Array", "String", "Object" ],
       "desc": "Style definitions to be attributed to the PDF object",
       "examples": [
-        "background-color: #ff0000",
-        ":content-style=\"{ backgroundColor: '#ff0000' }\""
+        "inner-content-style=\"background-color: #ff0000\"",
+        ":inner-content-style=\"{ backgroundColor: '#ff0000' }\""
       ]
     }
   }

@@ -926,10 +926,10 @@
   resolved "https://registry.yarnpkg.com/@positron/stack-trace/-/stack-trace-1.0.0.tgz#14fcc712a530038ef9be1ce6952315a839f466a8"
   integrity sha1-FPzHEqUwA475vhzmlSMVqDn0Zqg=
 
-"@quasar/app@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-1.0.5.tgz#b9501f1861cbee636a785a6ce0df0fc54b456ff2"
-  integrity sha512-YO7+wnUbmcbvYQ1O7DUt+7UKjV40MNISRs5g/oRfVlOGqw9EkDP4nrAg2lN17HQbIoA683ruSGh7pTS3fbg1aw==
+"@quasar/app@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@quasar/app/-/app-1.0.6.tgz#93c5d9663791bba68d09e3d9182ed7adf6feda0d"
+  integrity sha512-sRUlFjp63p9uutzUvGXENTzyUbtxG81mFzCLSbnUlqUiQ4g5/L/gf1yHzfuWZz1W3ga22rD7XmMT68BGu/xzAw==
   dependencies:
     "@quasar/babel-preset-app" "1.1.6"
     "@quasar/fastclick" "1.1.3"
@@ -1060,17 +1060,15 @@
 "@quasar/quasar-app-extension-qpdfviewer@file:..":
   version "1.0.0-beta.4"
 
-"@quasar/quasar-app-extension-qpublish@^1.0.0-alpha.6":
-  version "1.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@quasar/quasar-app-extension-qpublish/-/quasar-app-extension-qpublish-1.0.0-alpha.6.tgz#00126d1447ea925f35e15b5abdb1f927f9d29a4b"
-  integrity sha512-HCEwl2TZ8PUUMuCee7xqNQZeGOGD5ZrXSYI6ht+PeFbdUv7qdNCIt5LFkME8C8CdTTZIWZOkT4+M20f8dEOVxA==
-  dependencies:
-    quasar-mixin-colorize "^1.0.0-alpha.6"
+"@quasar/quasar-app-extension-qpublish@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@quasar/quasar-app-extension-qpublish/-/quasar-app-extension-qpublish-1.0.0-alpha.7.tgz#0ed96ce0cca2dfc73323226a3206628caa8ab238"
+  integrity sha512-FVhd3BSuwA2926bPmSnnCt1oXazjdjr1irxlmUsxq0UoibQK5j+vCBogoOBRv7PTGXHlwL1cxtJ173ArITjOpg==
 
-"@quasar/quasar-app-extension-qribbon@^1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@quasar/quasar-app-extension-qribbon/-/quasar-app-extension-qribbon-1.0.0-beta.5.tgz#9b785d3949c7250123fc4859c5028aee1ddc9aea"
-  integrity sha512-4/ZJ75n9BlYLBIXOPxn4wC9F6OPxr7IQRF5rSK44sVPp8fA992F0QcUN0UxstmUvsqvAENttEfp3JMQgKxZy/g==
+"@quasar/quasar-app-extension-qribbon@^1.0.0-beta.6":
+  version "1.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@quasar/quasar-app-extension-qribbon/-/quasar-app-extension-qribbon-1.0.0-beta.6.tgz#763a548c456a02d402a6f62acba3b38a9915787a"
+  integrity sha512-tI/wBKe2JX757LjWl5kYYcFtnXvQoIJKDb4fNhDRQ5MHjbSWcikQKh57qf+sa2KX9WkX8krCyrtRBkWZm0L8Zg==
 
 "@types/events@*":
   version "3.0.0"
@@ -3131,10 +3129,10 @@ electron-to-chromium@^1.3.188:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.189.tgz#aa84055eb36d364a68852ad2d25e1315a1d06196"
   integrity sha512-C26Kv6/rLNmGDaPR5HORMtTQat9aWBBKjQk9aFtN1Bk6cQBSw8cYdsel/mcrQlNlMMjt1sAKsTYqf77+sK2uTw==
 
-electron@^6.0.5:
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-6.0.5.tgz#f4c25126001b91be6e935005577eb5427f11a50e"
-  integrity sha512-B3gjUvvXxVH4QnmGEMYne83lG2XJNbNe0FPwVDhzA9FkapnBgvrsE/Fz6NFXTaZm6zSdC2ut1j38rfSTFvUtDA==
+electron@^6.0.7:
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-6.0.7.tgz#cf3f02502aa58d1517f3befd9c2da2a95cd2eb46"
+  integrity sha512-W0TFnJrBdYBUhzRnEqZt/CfYFmG9RwSnhhXBbOumn/qLQYr9e7kXb6z4y0XQQLhXKkDhuXp+dNqfzhtId5ZiQw==
   dependencies:
     "@types/node" "^10.12.18"
     electron-download "^4.1.0"
@@ -3381,10 +3379,10 @@ eslint-visitor-keys@^1.1.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz#e2a82cea84ff246ad6fb57f9bde5b46621459ec2"
   integrity sha512-8y9YjtM1JBJU/A9Kc+SbaOV4y29sSWckBwMHa+FGtVj5gN/sbnKDf6xJUl+8g7FAij9LVaP8C24DUiH/f/2Z9A==
 
-eslint@^6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.2.2.tgz#03298280e7750d81fcd31431f3d333e43d93f24f"
-  integrity sha512-mf0elOkxHbdyGX1IJEUsNBzCDdyoUgljF3rRlgfyYh0pwGnreLc0jjD6ZuleOibjmnUWZLY2eXwSooeOgGJ2jw==
+eslint@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.3.0.tgz#1f1a902f67bfd4c354e7288b81e40654d927eb6a"
+  integrity sha512-ZvZTKaqDue+N8Y9g0kp6UPZtS4FSY3qARxBs7p4f0H0iof381XHduqVerFWtK8DPtKmemqbqCFENWSQgPR/Gow==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
@@ -7051,11 +7049,6 @@ quasar-app-extension-qautomate@^1.0.0-alpha.5:
     inquirer "^6.4.1"
     param-case "^2.1.1"
     ware-loader "^0.2.4"
-
-quasar-mixin-colorize@^1.0.0-alpha.6:
-  version "1.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/quasar-mixin-colorize/-/quasar-mixin-colorize-1.0.0-alpha.9.tgz#e19c433a5b3f40c4ce4ab5c6e8506f7cb6eb83bb"
-  integrity sha512-xg49b7Z68D2+zdDOgq/XntKKAd2Anl1kIsLI3dKS26CCNGARB1JjPH9+tKd+r2MCcMf3R6qf775/vPKbsDZ4BQ==
 
 quasar@^1.1.0:
   version "1.1.0"
