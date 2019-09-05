@@ -5,7 +5,11 @@
 **QPdfviewer** allows you to display PDF documents in your Quasar App.
 
 :::
-Please give time for the PDF documents to load.
+Please give time for the PDF documents to load
+:::
+
+::: tip
+Be aware that if you are using Electron, then the PDFjs engine (`type="pdfjs"`)will always be selected because there is no native HTML5 PDF Viewer engine available
 :::
 
       </q-markdown>

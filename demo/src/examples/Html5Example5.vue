@@ -3,7 +3,7 @@
     <div v-for="(source, index) in sources" :key="index" class="q-pa-xs pdf-container" style="wifth: 50%;">
       <q-pdfviewer
         v-model="show"
-        :src="source"
+        :src="updatedSrc(source)"
         type="html5"
       />
     </div>
@@ -21,6 +21,14 @@ export default {
         'statics/pdf/pdf_open_parameters.pdf',
         'statics/pdf/gre_research_validity_data.pdf'
       ]
+    }
+  },
+  methods: {
+    updatedSrc (src) {
+      if (process.env.MODE === 'electron') {
+        return '/' + src
+      }
+      return src
     }
   }
 }

@@ -3,7 +3,7 @@
     <q-pdfviewer
       v-model="show"
       type="html5"
-      :src="src"
+      :src="updatedSrc"
       content-class="absolute"
     />
   </q-page>
@@ -15,6 +15,14 @@ export default {
     return {
       show: true,
       src: 'statics/pdf/pdf_open_parameters.pdf'
+    }
+  },
+  computed: {
+    updatedSrc () {
+      if (process.env.MODE === 'electron') {
+        return '/' + this.src
+      }
+      return this.src
     }
   }
 }
