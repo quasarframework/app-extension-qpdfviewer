@@ -2,8 +2,9 @@
   <div>
     <section class="page-header relative">
       <div class="text-h1 project-name">QPdfviewer</div>
-      <div class="text-h2 project-tagline">PDF Viewer for SPA, SSR and Electron</div>
+      <div class="text-h2 project-tagline">PDF Viewer for SPA, SSR, Electron and Mobile</div>
       <div class="byline">Created and maintained by Jeff Galbraith</div>
+      <div class="quasar">A Quasar Framework App Extension</div>
       <q-btn type="a" href="https://github.com/quasarframework/app-extension-qpdfviewer" target="_blank" class="btn" label="View on GitHub" no-caps flat/>
       <q-btn to="/docs" class="btn" label="Docs" no-caps flat/>
       <q-btn to="/examples" class="btn" label="Examples" no-caps flat/>
