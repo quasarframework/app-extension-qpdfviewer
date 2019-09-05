@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qpdfviewer",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "description": "QPdfviewer is an app extension for viewing PDF files",
   "author": "Hawkeye64 <jeff@quasar-framework.org>",
   "main": "src/index.js",
