@@ -13,3 +13,5 @@ yarn.lock
 *.ntvs*
 *.njsproj
 *.sln
+
+demo/dist/spa/
