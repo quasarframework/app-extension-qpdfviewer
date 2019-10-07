@@ -37,7 +37,7 @@ Can be found [here](https://quasarframework.github.io/app-extension-qpdfviewer)
 
 # Example Code
 Be sure to check out the Test Project for more examples.
-```
+```html
 <q-pdfviewer
   v-model="show"
   src="'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf'"
