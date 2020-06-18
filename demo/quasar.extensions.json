@@ -2,7 +2,10 @@
   "@quasar/qpdfviewer": {},
   "@quasar/qpublish": {},
   "@quasar/qribbon": {},
-  "@quasar/qmarkdown": {},
+  "@quasar/qmarkdown": {
+    "import_md": true,
+    "import_vmd": true
+  },
   "qautomate": {
     "quasarConfFixMode": "automatic",
     "sort": true
