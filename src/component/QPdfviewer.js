@@ -42,8 +42,7 @@ export default Vue.extend({
           height: '100%'
         },
         on: {
-          error: this.$listeners.error,
-          load: this.$listeners.load
+          ...this.$listeners
         }
       }, [
         // browser object not supported, try iframe
