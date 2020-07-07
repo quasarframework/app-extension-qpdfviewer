@@ -14,8 +14,8 @@ const extendConf = function (conf) {
   conf.build.transpileDependencies.push(/quasar-app-extension-qpdfviewer[\\/]src/)
 
   // make sure qpdfviewer css goes through webpack to avoid ssr issues
-  conf.css.push('~@quasar/quasar-app-extension-qpdfviewer/src/component/pdfviewer.styl')
-  console.log(` App Extension (qpdfviewer) Info: 'Adding pdfviewer.styl css reference to your quasar.conf.js'`)
+  conf.css.push('~@quasar/quasar-app-extension-qpdfviewer/src/component/pdfviewer.sass')
+  console.log(` App Extension (qpdfviewer) Info: 'Adding pdfviewer.sass css reference to your quasar.conf.js'`)
 }
 
 module.exports = function (api) {

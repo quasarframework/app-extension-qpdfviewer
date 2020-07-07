@@ -3,7 +3,7 @@ QPdfviewer
 
 QPdfviewer is a [Quasar App Extension](https://quasar.dev/app-extensions/introduction). It allows you to display PDF documents in your Quasar App.
 
-![QPdfviewer](statics/qpdfviewer.png "QWindow" =800x800)
+![QPdfviewer](qpdfviewer.png "QWindow" =800x800)
 
 This work is currently in `beta` and there are expected changes while things get worked out. Your help with testing is greatly appreciated. Suggestions and PRs welcomed.
 
@@ -43,7 +43,7 @@ Working with QPdfviewer can be very minimal:
 ```html
   <q-pdfviewer
     v-model="visible"
-    src="statics/pdf/c4611_sample_explain.pdf"
+    src="pdf/c4611_sample_explain.pdf"
     type="html5"
   />
 ```
@@ -51,13 +51,13 @@ or
 ```html
   <q-pdfviewer
     v-model="visible"
-    src="statics/pdf/c4611_sample_explain.pdf"
+    src="pdf/c4611_sample_explain.pdf"
     type="pdfjs"
   />
 ```
 
 # PDFjs
-The PDFjs engine is a bit buggy. It's been found that it works best if you can provide a full URL instead of a relative URL. Or, the first character of your URL path **must** start with a `/`. So instead of `statics/my-pdf-file.pdf` use `/statics/my-pdf-file.pdf`.
+The PDFjs engine is a bit buggy. It's been found that it works best if you can provide a full URL instead of a relative URL. Or, the first character of your URL path **must** start with a `/`. So instead of `my-pdf-file.pdf` use `/my-pdf-file.pdf`.
 
 # Blobs
 If you want to load a PDF as a blob, you can do it like this:

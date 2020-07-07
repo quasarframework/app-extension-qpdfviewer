@@ -14,22 +14,26 @@ Be aware that if you are using Electron, then the PDFjs engine (`type="pdfjs"`)w
 
       </q-markdown>
       <example-title title="HTML5 Examples" />
-      <example-card title="HTML5 Example 1" name="Html5Example1" :tag-parts="getTagParts(require('!!raw-loader!../examples/Html5Example1.vue').default)" />
-      <example-card title="HTML5 Example 2" name="Html5Example2" :tag-parts="getTagParts(require('!!raw-loader!../examples/Html5Example2.vue').default)" />
-      <example-card title="HTML5 Example 3" name="Html5Example3" :tag-parts="getTagParts(require('!!raw-loader!../examples/Html5Example3.vue').default)" />
-      <example-card title="HTML5 Example 4" name="Html5Example4" :tag-parts="getTagParts(require('!!raw-loader!../examples/Html5Example4.vue').default)" />
-      <example-card title="HTML5 Example 5" name="Html5Example5" :tag-parts="getTagParts(require('!!raw-loader!../examples/Html5Example5.vue').default)" />
+      <example-viewer title="HTML5 Example 1" file="Html5Example1" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="HTML5 Example 2" file="Html5Example2" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="HTML5 Example 3" file="Html5Example3" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="HTML5 Example 4" file="Html5Example4" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="HTML5 Example 5" file="Html5Example5" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
       <example-title title="PDFJS Examples" />
-      <example-card title="PDFJS Example 1" name="PdfjsExample1" :tag-parts="getTagParts(require('!!raw-loader!../examples/PdfjsExample1.vue').default)" />
-      <example-card title="PDFJS Example 2" name="PdfjsExample2" :tag-parts="getTagParts(require('!!raw-loader!../examples/PdfjsExample2.vue').default)" />
-      <example-card title="PDFJS Example 3" name="PdfjsExample3" :tag-parts="getTagParts(require('!!raw-loader!../examples/PdfjsExample3.vue').default)" />
-      <example-card title="PDFJS Example 4" name="PdfjsExample4" :tag-parts="getTagParts(require('!!raw-loader!../examples/PdfjsExample4.vue').default)" />
-      <example-card title="PDFJS Example 5" name="PdfjsExample5" :tag-parts="getTagParts(require('!!raw-loader!../examples/PdfjsExample5.vue').default)" />
+      <example-viewer title="PDFJS Example 1" file="PdfjsExample1" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="PDFJS Example 2" file="PdfjsExample2" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="PDFJS Example 3" file="PdfjsExample3" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="PDFJS Example 4" file="PdfjsExample4" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
+      <example-viewer title="PDFJS Example 5" file="PdfjsExample5" :location-url="locationUrl" :js-paths="jsPaths" :css-paths="cssPaths" />
 
     </div>
     <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-      <q-btn fab icon="keyboard_arrow_up" color="primary" />
+      <q-btn
+        fab
+        icon="keyboard_arrow_up"
+        :class="{ 'text-black bg-grey-4': $q.dark.isActive, 'text-white bg-primary': !$q.dark.isActive }"
+      />
     </q-page-scroller>
   </hero>
 </template>
@@ -37,22 +41,24 @@ Be aware that if you are using Electron, then the PDFjs engine (`type="pdfjs"`)w
 <script>
 import Hero from '../components/Hero'
 import ExampleTitle from '../components/ExampleTitle'
-import ExampleCard from '../components/ExampleCard'
 import { slugify } from 'assets/page-utils'
-import getTagParts from '@quasar/quasar-ui-qmarkdown/src/util/getTagParts.js'
 
 export default {
   name: 'Examples',
 
   components: {
     Hero,
-    ExampleTitle,
-    ExampleCard
+    ExampleTitle
   },
 
   data () {
     return {
-      tempToc: []
+      tempToc: [],
+      locationUrl: 'https://github.com/quasarframework/app-extension-qpdfviewer/tree/dev/demo/src/examples/',
+      jsPaths: [
+      ],
+      cssPaths: [
+      ]
     }
   },
 
@@ -90,9 +96,12 @@ export default {
   },
 
   methods: {
-    getTagParts,
     addToToc (name, level = 1) {
-      const slug = slugify(name)
+      let n = name
+      if (level > 1) {
+        n = 'example-' + n
+      }
+      const slug = slugify(n)
       this.tempToc.push({
         children: [],
         id: slug,

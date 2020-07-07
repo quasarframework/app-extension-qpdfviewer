@@ -42,8 +42,7 @@ export default Vue.extend({
           height: '100%'
         },
         on: {
-          error: this.$listeners.error,
-          load: this.$listeners.load
+          ...this.$listeners
         }
       }, [
         // browser object not supported, try iframe
@@ -69,7 +68,7 @@ export default Vue.extend({
       return h('iframe', {
         staticClass: 'q-pdfviewer__iframe',
         attrs: {
-          src: 'statics/pdfjs/web/viewer.html?file=' + this.src
+          src: 'pdfjs/web/viewer.html?file=' + this.src
         }
       }, [
         // iframe not supported either, give user a link to download

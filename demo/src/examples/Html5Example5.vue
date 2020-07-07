@@ -16,10 +16,10 @@ export default {
     return {
       show: true,
       sources: [
-        'statics/pdf/pdf-test.pdf',
-        'statics/pdf/c4611_sample_explain.pdf',
-        'statics/pdf/pdf_open_parameters.pdf',
-        'statics/pdf/gre_research_validity_data.pdf'
+        'pdf/pdf-test.pdf',
+        'pdf/c4611_sample_explain.pdf',
+        'pdf/pdf_open_parameters.pdf',
+        'pdf/gre_research_validity_data.pdf'
       ]
     }
   },
