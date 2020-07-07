@@ -69,7 +69,7 @@ export default Vue.extend({
       return h('iframe', {
         staticClass: 'q-pdfviewer__iframe',
         attrs: {
-          src: 'statics/pdfjs/web/viewer.html?file=' + this.src
+          src: 'pdfjs/web/viewer.html?file=' + this.src
         }
       }, [
         // iframe not supported either, give user a link to download
