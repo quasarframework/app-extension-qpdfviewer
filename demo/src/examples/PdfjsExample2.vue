@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center page-static-height">
     <q-pdfviewer
       v-model="show"
       type="pdfjs"
