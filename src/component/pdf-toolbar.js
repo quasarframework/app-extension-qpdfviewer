@@ -19,14 +19,16 @@ const selection = (element) => {
 
 const QPDFBtn = {
   props: {
-    icon: String
+    icon: String,
+    dense: Boolean
   },
   render (h) {
     return h(QBtn, {
       props: {
         icon: this.icon,
         flat: true,
-        stretch: true
+        stretch: true,
+        dense: this.dense
       },
       on: this.$listeners
     }, [
@@ -56,27 +58,21 @@ export const QPdfToolbarDesktop = {
           vertical: true
         }
       }),
-      h(
-        'div',
-        {
-          staticClass: 'row items-center q-col-gutter-x-xs q-px-sm'
+      h(QInput, {
+        staticClass: 'q-px-sm',
+        props: {
+          value: this.page,
+          filled: true,
+          dense: true,
+          hideBottomSpace: true
         },
-        [
-          h(QInput, {
-            props: {
-              value: this.page,
-              filled: true,
-              dense: true,
-              hideBottomSpace: true
-            },
-            on: {
-              input: (value) => this.$emit('changePage', value),
-              click: (event) => selection(event.target)
-            }
-          }),
-          h('div', '/ ' + this.pagesCount)
-        ]
-      ),
+        on: {
+          input: (value) => this.$emit('changePage', value),
+          click: (event) => selection(event.target)
+        }
+      }, [
+        h('div', { slot: 'after' }, `/ ${this.pagesCount}`)
+      ]),
       h(QSeparator, {
         props: {
           vertical: true
@@ -113,7 +109,7 @@ export const QPdfToolbarDesktop = {
       }),
       h(QPDFBtn, {
         props: {
-          icon: icons.find
+          icon: icons.search
         }
       }, [
         h(QMenu, {
@@ -142,7 +138,7 @@ export const QPdfToolbarDesktop = {
             on: {
               input: (value) => {
                 this.query = value
-                this.$emit('find', value)
+                this.$emit('search', value)
               }
             }
           })
@@ -165,13 +161,15 @@ export const QPdfToolbarMobile = {
     }, [
       h(QPDFBtn, {
         props: {
-          icon: icons.pagePrevious
+          icon: icons.pagePrevious,
+          dense: true
         },
         on: {
           click: (event) => this.$emit('pagePrevious', event)
         }
       }),
       h(QInput, {
+        staticClass: 'col',
         props: {
           value: this.page,
           filled: true,
@@ -182,12 +180,13 @@ export const QPdfToolbarMobile = {
           input: (value) => this.$emit('changePage', value),
           click: (event) => selection(event.target)
         }
-      }),
-      h('div', '/'),
-      h('div', this.pagesCount),
+      }, [
+        h('div', { slot: 'after' }, `/ ${this.pagesCount}`)
+      ]),
       h(QPDFBtn, {
         props: {
-          icon: icons.pageNext
+          icon: icons.pageNext,
+          dense: true
         },
         on: {
           click: (event) => this.$emit('pageNext', event)

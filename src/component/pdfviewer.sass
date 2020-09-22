@@ -28,17 +28,22 @@ $border-radius: 4px
     margin: 0 auto
     padding: 0
 
-  .q-input .q-field__control
-    width: 30px
-    height: 30px
-    padding: 0 2px
-    background: transparent
+  .q-input
+    .q-field__control
+      width: 30px
+      height: 30px
+      padding: 0 2px
+      background: transparent
 
-    &:before
-      border: 0
+      &:before
+        border: 0
 
-    .q-field__native
-      text-align: center
+      .q-field__native
+        text-align: center
+
+    .q-field__after.q-field__marginal
+      font-size: 14px
+      color: #555555
 
 .q-pdf-error-container
   position: absolute
@@ -98,7 +103,7 @@ $border-radius: 4px
     bottom: 0
     overflow: hidden
     opacity: 0.2
-    line-height: 0.8
+    line-height: 1.2
 
     > span
       color: transparent

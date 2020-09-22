@@ -4,6 +4,6 @@ export default {
   zoomIn: 'las la-plus-circle',
   zoomOut: 'las la-minus-circle',
   viewColumns: 'las la-columns',
-  find: 'las la-search',
+  search: 'las la-search',
   warning: 'las la-exclamation-circle'
 }
