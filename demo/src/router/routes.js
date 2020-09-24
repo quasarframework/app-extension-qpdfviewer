@@ -15,7 +15,8 @@ const routes = [
     path: '/examples',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Examples.vue') }
+      { path: '', component: () => import('pages/Examples.vue') },
+      { path: 'pdf', component: () => import('pages/Pdf.vue') }
     ]
   }
 ]
