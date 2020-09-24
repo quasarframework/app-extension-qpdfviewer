@@ -1,12 +1,6 @@
-/**
- * @doc https://github.com/mozilla/pdf.js/blob/master/examples/mobile-viewer/viewer.js
- * @doc https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.js
- * @doc https://codesandbox.io/s/qviewer-4u41x
- */
-
 import Vue from 'vue'
 import { QIcon, QLinearProgress } from 'quasar'
-import Viewer from './Viewer.js'
+import Viewer, { LINK_TARGET_MODES } from './Viewer.js'
 import { QPdfToolbarDesktop, QPdfToolbarMobile } from './pdf-toolbar.js'
 import icons from './icons'
 
@@ -50,20 +44,27 @@ export default Vue.extend({
     },
     minScale: {
       type: Number,
-      default: 0.25
+      default: 0.5
     },
     maxScale: {
       type: Number,
       default: 10.0
     },
     scale: {
-      type: Number,
-      default: 1
+      type: [Number, String],
+      default: 'auto'
+    },
+    singlePage: {
+      type: Boolean
     },
     mode: {
       type: String,
       default: 'auto',
       validator: v => ['desktop', 'mobile', 'auto'].indexOf(v) !== -1
+    },
+    linkTarget: {
+      type: String,
+      validator: v => LINK_TARGET_MODES.indexOf(v) !== -1 // NONE, SELF, BLANK, PARENT, TOP
     },
     src: {
       type: String
@@ -132,7 +133,9 @@ export default Vue.extend({
         container: this.$refs.container,
         onlyCssZoom: this.onlyCssZoom,
         textLayer: this.textLayer,
-        scale: this.scaleDelta
+        scale: this.scale,
+        linkTarget: this.linkTarget,
+        singlePage: this.singlePage
       })
       this.viewer.on('error', (message) => {
         this.errorMessage = message
@@ -174,7 +177,10 @@ export default Vue.extend({
   render (h) {
     const toolbar = this.isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
     return h('div', {
-      staticClass: 'q-pdf-viewer column no-wrap'
+      staticClass: 'q-pdf-viewer column no-wrap',
+      class: {
+        'q-pdf-viewer-mobile': this.isMobile
+      }
     }, [
       this.hasError !== true && h(toolbar, {
         props: {

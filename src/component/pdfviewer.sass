@@ -103,7 +103,7 @@ $border-radius: 4px
     bottom: 0
     overflow: hidden
     opacity: 0.2
-    line-height: 1.2
+    line-height: 1
 
     > span
       color: transparent
@@ -123,6 +123,27 @@ $border-radius: 4px
 
       &.selected
         background: $pdf-text-highlight
+
+  .annotationLayer
+    section
+      position: absolute
+
+    .buttonWidgetAnnotation.pushButton > a,
+    .linkAnnotation > a
+      position: absolute
+      font-size: 1em
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+
+      &:hover
+        opacity: 0.2
+        background: $pdf-text-highlight
+
+    .textAnnotation img
+      position: absolute
+      cursor: pointer
 
 .q-pdf-viewer-popup
   padding: 8px

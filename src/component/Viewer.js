@@ -1,6 +1,26 @@
-import PDFJS, { PDFViewer as PDFViewerCore } from './pdf.js'
-const { EventBus, PDFLinkService, PDFFindController, NullL10n, PDFViewer, PDFHistory } = PDFViewerCore
+/**
+ * @doc https://github.com/mozilla/pdf.js/blob/master/examples/components/singlepageviewer.js
+ * @doc https://github.com/mozilla/pdf.js/blob/master/examples/mobile-viewer/viewer.js
+ * @doc https://github.com/mozilla/pdfjs-dist/blob/master/web/pdf_viewer.js
+ * @doc https://codesandbox.io/s/qviewer-4u41x
+ */
+
+import PDFJS from './pdf.js'
 import i18n from './i18n'
+import pluginPinchZoom from './plugins/pinchZoom'
+
+const PDFViewerCore = require('pdfjs-dist/web/pdf_viewer.js')
+const {
+  EventBus,
+  PDFHistory,
+  PDFLinkService,
+  PDFFindController,
+  NullL10n,
+  PDFViewer,
+  PDFSinglePageViewer
+} = PDFViewerCore
+
+const pinchZoom = pluginPinchZoom(PDFJS, PDFViewerCore)
 
 export const SCROLL_MODE = {
   UNKNOWN: -1,
@@ -9,13 +29,33 @@ export const SCROLL_MODE = {
   WRAPPED: 2
 }
 
+export const LINK_TARGET = {
+  NONE: 0,
+  SELF: 1,
+  BLANK: 2,
+  PARENT: 3,
+  TOP: 4
+}
+
+export const LINK_TARGET_MODES = Object.keys(LINK_TARGET)
+
 export default class Viewer extends EventBus {
-  constructor ({ container, onlyCssZoom, textLayer, scale }) {
+  constructor ({ container, onlyCssZoom, textLayer, scale, linkTarget, singlePage }) {
     super()
     this.eventBus = new EventBus()
+    const config = {
+      container,
+      eventBus: this.eventBus,
+      linkService: this.linkService,
+      findController: this.findController,
+      l10n: this.l10n,
+      useOnlyCssZoom: onlyCssZoom,
+      textLayerMode: textLayer
+    }
 
     this.linkService = new PDFLinkService({
-      eventBus: this.eventBus
+      eventBus: this.eventBus,
+      externalLinkTarget: Viewer.getLinkTarget(linkTarget)
     })
 
     this.findController = new PDFFindController({
@@ -25,14 +65,14 @@ export default class Viewer extends EventBus {
 
     this.l10n = NullL10n
 
-    this.viewer = new PDFViewer({
-      container,
-      eventBus: this.eventBus,
-      linkService: this.linkService,
-      findController: this.findController,
-      l10n: this.l10n,
-      useOnlyCssZoom: onlyCssZoom,
-      textLayerMode: textLayer
+    if (singlePage) {
+      this.viewer = new PDFSinglePageViewer(config)
+    } else {
+      this.viewer = new PDFViewer(config)
+    }
+
+    this.viewer.eventBus.on('baseviewerinit', ({ source }) => {
+      pinchZoom(source)
     })
 
     this.linkService.setViewer(this.viewer)
@@ -54,15 +94,16 @@ export default class Viewer extends EventBus {
       'pagechanging',
       (evt) => {
         this.dispatch('pages:changed', evt.pageNumber)
-        /* const page = evt.pageNumber
-        const numPages = this.pagesCount
-
-        this.page = page
-        this.previousDisabled = page <= 1
-        this.nextDisabled = page >= numPages */
       },
       true
     )
+  }
+
+  static getLinkTarget (mode) {
+    if (LINK_TARGET[mode] === void 0) {
+      return LINK_TARGET.BLANK // default
+    }
+    return LINK_TARGET[mode]
   }
 
   setScale (value) {
@@ -289,7 +330,7 @@ export default class Viewer extends EventBus {
   search (query) {
     this.findController.executeCommand('find', {
       caseSensitive: false,
-      // findPrevious: undefined,
+      findPrevious: void 0,
       highlightAll: true,
       phraseSearch: true,
       query
