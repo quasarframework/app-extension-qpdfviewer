@@ -42,16 +42,8 @@ export const LINK_TARGET_MODES = Object.keys(LINK_TARGET)
 export default class Viewer extends EventBus {
   constructor ({ container, onlyCssZoom, textLayer, scale, linkTarget, singlePage }) {
     super()
+
     this.eventBus = new EventBus()
-    const config = {
-      container,
-      eventBus: this.eventBus,
-      linkService: this.linkService,
-      findController: this.findController,
-      l10n: this.l10n,
-      useOnlyCssZoom: onlyCssZoom,
-      textLayerMode: textLayer
-    }
 
     this.linkService = new PDFLinkService({
       eventBus: this.eventBus,
@@ -64,6 +56,16 @@ export default class Viewer extends EventBus {
     })
 
     this.l10n = NullL10n
+
+    const config = {
+      container,
+      eventBus: this.eventBus,
+      linkService: this.linkService,
+      findController: this.findController,
+      l10n: this.l10n,
+      useOnlyCssZoom: onlyCssZoom,
+      textLayerMode: textLayer
+    }
 
     if (singlePage) {
       this.viewer = new PDFSinglePageViewer(config)
@@ -228,25 +230,25 @@ export default class Viewer extends EventBus {
     this.setTitle(title)
   }
 
-  async setTitleUsingMetadata (document) {
+  async setTitleUsingMetadata (pdfDocument) {
     try {
-      const { info, metadata } = await document.getMetadata()
+      const { info, metadata } = await pdfDocument.getMetadata()
       this.documentInfo = info
       this.metadata = metadata
 
       console.log(
         'PDF ' +
-          document.fingerprint +
-          ' [' +
-          info.PDFFormatVersion +
-          ' ' +
-          (info.Producer || '-').trim() +
-          ' / ' +
-          (info.Creator || '-').trim() +
-          ']' +
-          ' (PDF.js: ' +
-          (PDFJS.version || '-') +
-          ')'
+        pdfDocument.fingerprint +
+        ' [' +
+        info.PDFFormatVersion +
+        ' ' +
+        (info.Producer || '-').trim() +
+        ' / ' +
+        (info.Creator || '-').trim() +
+        ']' +
+        ' (PDF.js: ' +
+        (PDFJS.version || '-') +
+        ')'
       )
 
       let pdfTitle
