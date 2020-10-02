@@ -1,79 +1,43 @@
 <template>
-    <q-layout view="HHh LpR fFf" @scroll="onScroll">
-
+  <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
           dense
           round
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          icon="menu"
           aria-label="Menu"
-        >
-          <q-icon name="menu" />
-        </q-btn>
+          @click="leftDrawerOpen = !leftDrawerOpen"
+        />
 
-        <q-toolbar-title v-if="$q.screen.width > 500">
-          QPdfviewer <span class="text-subtitle2">v{{ version }}</span>
+        <q-toolbar-title>
+          Quasar App
         </q-toolbar-title>
 
-        <q-space />
-
-        <q-btn flat round @click="$q.dark.toggle()" :icon="$q.dark.isActive ? 'brightness_2' : 'brightness_5'" />
-        <div v-if="$q.screen.width > 500">Quasar v{{ $q.version }}</div>
-
-        <q-btn
-          flat
-          dense
-          round
-          @click="rightDrawerOpen = !rightDrawerOpen"
-          aria-label="Table of Contents"
-        >
-          <q-icon name="menu" />
-        </q-btn>
-
+        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
+      show-if-above
       bordered
-      aria-label="Menu"
-      class="menu"
+      content-class="bg-grey-1"
     >
       <q-list>
-        <q-item-label header>Essential Links</q-item-label>
-        <q-separator />
+        <q-item-label
+          header
+          class="text-grey-8"
+        >
+          Essential Links
+        </q-item-label>
+        <EssentialLink
+          v-for="link in essentialLinks"
+          :key="link.title"
+          v-bind="link"
+        />
       </q-list>
-      <essential-links />
-      <q-separator />
-    </q-drawer>
-
-    <q-drawer
-      v-model="rightDrawerOpen"
-      side="right"
-      bordered
-      aria-label="Table of Contents"
-      class="toc"
-    >
-      <q-scroll-area class="fit">
-        <q-list dense>
-          <q-item
-            v-for="item in toc"
-            :key="item.id"
-            clickable
-            v-ripple
-            dense
-            @click="scrollTo(item.id)"
-            :active="activeToc === item.id"
-          >
-          <q-item-section v-if="item.level > 1" side> • </q-item-section>
-            <q-item-section
-              :class="`toc-item toc-level-${item.level}`"
-            >{{ item.label }}</q-item-section>
-          </q-item>
-        </q-list>
-      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -83,84 +47,91 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { scroll } from 'quasar'
-const { setScrollPosition } = scroll
+import EssentialLink from 'components/EssentialLink.vue'
 
-const version = require('@quasar/quasar-app-extension-qpdfviewer/package.json').version
+const linksData = [
+  {
+    title: 'QPdfviewer docs',
+    caption: 'Documentation',
+    icon: 'bolt',
+    link: '/docs'
+  },
+  {
+    title: 'QPdfviewer examples',
+    caption: 'Examples of how to do it',
+    icon: 'bolt',
+    link: '/examples'
+  },
+  {
+    title: 'QPdfviewer home',
+    caption: '@quasar/qpdfviewer',
+    icon: 'extension',
+    link: 'https://github.com/quasarframework/quasar-ui-qpdfviewer'
+  },
+  {
+    title: 'QMarkdown home',
+    caption: '@quasar/qmarkdown',
+    icon: 'extension',
+    link: 'https://github.com/quasarframework/app-extension-qmarkdown'
+  },
+  {
+    title: 'Jeff\'s Twitter',
+    caption: '@jgalbraith64',
+    icon: 'fab fa-twitter',
+    link: 'https://twitter.com/jgalbraith64',
+    seperator: true
+  },
+  {
+    title: 'Docs',
+    caption: 'quasar.dev',
+    icon: 'school',
+    link: 'https://quasar.dev'
+  },
+  {
+    title: 'Github',
+    caption: 'github.com/quasarframework',
+    icon: 'code',
+    link: 'https://github.com/quasarframework'
+  },
+  {
+    title: 'Discord Chat Channel',
+    caption: 'chat.quasar.dev',
+    icon: 'chat',
+    link: 'https://chat.quasar.dev'
+  },
+  {
+    title: 'Forum',
+    caption: 'forum.quasar.dev',
+    icon: 'record_voice_over',
+    link: 'https://forum.quasar.dev'
+  },
+  {
+    title: 'Twitter',
+    caption: '@quasarframework',
+    icon: 'rss_feed',
+    link: 'https://twitter.quasar.dev'
+  },
+  {
+    title: 'Facebook',
+    caption: '@QuasarFramework',
+    icon: 'public',
+    link: 'https://facebook.quasar.dev'
+  },
+  {
+    title: 'Quasar Awesome',
+    caption: 'Community Quasar projects',
+    icon: 'favorite',
+    link: 'https://awesome.quasar.dev'
+  }
+]
 
 export default {
   name: 'MainLayout',
-  components: {
-    'essential-links': () => import('../components/EssentialLinks')
-  },
+  components: { EssentialLink },
   data () {
     return {
-      version: version,
-      leftDrawerOpen: this.$q.platform.is.desktop,
-      rightDrawerOpen: this.$q.platform.is.desktop,
-      activeToc: 0
-    }
-  },
-  mounted () {
-    // code to handle anchor link on refresh/new page, etc
-    if (location.hash !== '') {
-      const id = location.hash.substring(1, location.hash.length)
-      setTimeout(() => {
-        this.scrollTo(id)
-      }, 200)
-    }
-  },
-  computed: {
-    ...mapGetters({
-      toc: 'common/toc'
-    })
-  },
-  methods: {
-    scrollTo (id) {
-      this.activeToc = id
-      const el = document.getElementById(id)
-
-      if (el) {
-        setTimeout(() => {
-          this.scrollPage(el)
-        }, 200)
-      }
-    },
-    scrollPage (el) {
-      // const target = getScrollTarget(el)
-      const offset = el.offsetTop - 50
-      // setScrollPosition(target, offset, 500)
-      setScrollPosition(window, offset, 500)
-    },
-    onScroll ({ position }) {
-      if (this.scrollingPage !== true) {
-        this.updateActiveToc(position)
-      }
-    },
-    updateActiveToc (position) {
-      const toc = this.toc
-      let last
-
-      for (const i in toc) {
-        const section = toc[i]
-        const item = document.getElementById(section.id)
-
-        if (item === null) {
-          continue
-        }
-
-        if (item.offsetTop >= position + 100) {
-          if (last === void 0) {
-            last = section.id
-          }
-          break
-        }
-      }
-
-      if (last !== void 0) {
-        this.activeToc = last
-      }
+      leftDrawerOpen: false,
+      essentialLinks: linksData
     }
   }
 }

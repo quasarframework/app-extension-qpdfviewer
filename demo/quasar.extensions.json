@@ -1,10 +1,9 @@
 {
-  "@quasar/qribbon": {},
   "@quasar/qmarkdown": {
     "import_md": true,
     "import_vmd": true
   },
+  "@quasar/qribbon": {},
   "example-viewer": {},
-  "json-api-viewer": {},
-  "@quasar/qpdfviewer": {}
+  "json-api-viewer": {}
 }

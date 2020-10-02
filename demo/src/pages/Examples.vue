@@ -1,6 +1,8 @@
 <template>
   <hero>
     <div>
+
+      <example-title title="QPdfviewer Examples" />
       <q-markdown>
 **QPdfviewer** allows you to display PDF documents in your Quasar App.
 
@@ -25,6 +27,7 @@
 <script>
 import Hero from '../components/Hero'
 import { slugify } from 'assets/page-utils'
+import { version } from 'ui'
 
 export default {
   name: 'Examples',
@@ -36,10 +39,11 @@ export default {
   data () {
     return {
       tempToc: [],
-      locationUrl: 'https://github.com/quasarframework/app-extension-qpdfviewer/tree/dev/demo/src/examples/',
-      jsPaths: [
-      ],
+      locationUrl: 'https://github.com/quasarframework/quasar-ui-qpdfviewer/tree/dev/demo/src/examples/',
+      jsPaths: [`https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qpdfviewer@${version}/dist/index.umd.min.js`],
       cssPaths: [
+        `https://cdn.jsdelivr.net/npm/@quasar/quasar-ui-qpdfviewer@${version}/dist/index.min.css`,
+        'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.css'
       ]
     }
   },
@@ -48,7 +52,7 @@ export default {
     this.toc = []
     this.tempToc = []
 
-    this.addToToc('PDFJS Examples')
+    this.addToToc('QPdfviewer Examples')
     this.addToToc('PDFJS Example 1', 2)
     this.addToToc('PDFJS Example 2', 2)
     this.addToToc('PDFJS Example 3', 2)
@@ -86,12 +90,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus">
-.example-page
-  padding: 16px 46px;
-  font-weight: 300;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-</style>

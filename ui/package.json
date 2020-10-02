@@ -1,0 +1,72 @@
+{
+  "name": "@quasar/quasar-ui-qpdfviewer",
+  "version": "1.0.0",
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "description": "My awesome component",
+  "license": "MIT",
+  "module": "dist/index.esm.js",
+  "main": "dist/index.common.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "lint-fix": "eslint --ext .js,.vue src --fix",
+    "dev": "cd dev && yarn dev && cd ..",
+    "dev:umd": "yarn build && node build/script.open-umd.js",
+    "dev:ssr": "cd dev && yarn 'dev:ssr' && cd ..",
+    "dev:ios": "cd dev && yarn 'dev:ios' && cd ..",
+    "dev:android": "cd dev && yarn 'dev:android' && cd ..",
+    "dev:electron": "cd dev && yarn 'dev:electron' && cd ..",
+    "build": "node build/index.js",
+    "build:js": "node build/script.javascript.js",
+    "build:css": "node build/script.css.js",
+    "build:api": "node build/build.api.js"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/hawkeye64"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/quasar-ui-qpdfviewer.git"
+  },
+  "bugs": "https://github.com/quasarframework/quasar-ui-qpdfviewer/issues",
+  "homepage": "https://github.com/quasarframework/quasar-ui-qpdfviewer",
+  "keywords": [
+    "quasar",
+    "quasarframework",
+    "app",
+    "app extension",
+    "extension",
+    "pdf",
+    "viewer"
+  ],
+  "vetur": {
+    "tags": "dist/vetur/tags.json",
+    "attributes": "dist/vetur/attributes.json"
+  },
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "autoprefixer": "^9.8.6",
+    "chalk": "^4.1.0",
+    "cssnano": "^4.1.10",
+    "fs-extra": "^9.0.1",
+    "node-sass": "^4.14.1",
+    "open": "^7.3.0",
+    "postcss": "^7.0.32",
+    "postcss-rtl": "^1.7.3",
+    "quasar": "^1.14.1",
+    "quasar-json-api": "^1.0.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.28.2",
+    "uglify-es": "^3.3.9",
+    "zlib": "^1.0.5"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
+}

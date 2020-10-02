@@ -1,6 +1,4 @@
-export function copyHeading (id) {
-  const text = window.location.origin + window.location.pathname + '#' + id
-
+export function copyToClipboard (text) {
   var textArea = document.createElement('textarea')
   textArea.className = 'fixed-top'
   textArea.value = text
@@ -10,6 +8,25 @@ export function copyHeading (id) {
 
   document.execCommand('copy')
   document.body.removeChild(textArea)
+}
+
+export function copyHeading (id) {
+  const text = window.location.origin + window.location.pathname + '#' + id
+  const el = document.getElementById(id)
+
+  if (el) {
+    el.id = ''
+  }
+
+  window.location.hash = '#' + id
+
+  if (el) {
+    setTimeout(() => {
+      el.id = id
+    }, 300)
+  }
+
+  copyToClipboard(text)
 
   this.$q.notify({
     message: 'Anchor has been copied to clipboard.',
@@ -23,4 +40,8 @@ export function copyHeading (id) {
 
 export function slugify (str) {
   return encodeURIComponent(String(str).trim().replace(/\s+/g, '-'))
+}
+
+export function makeUrl (slug) {
+  window.location = window.location.origin + window.location.pathname + '#' + slug
 }

@@ -9,7 +9,7 @@
 
 const path = require('path')
 
-module.exports = function (ctx) {
+module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -19,9 +19,10 @@ module.exports = function (ctx) {
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    // https://quasar.dev/quasar-cli/cli-documentation/boot-files
+    // https://quasar.dev/quasar-cli/boot-files
     boot: [
-      // 'components'
+      'qpdfviewer',
+      'components'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -39,14 +40,14 @@ module.exports = function (ctx) {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      'roboto-font',
+      'roboto-font', // optional, you are not bound to it
       'material-icons' // optional, you are not bound to it
     ],
 
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      // scopeHoisting: true,
       vueRouterMode: 'history', // available values: 'hash', 'history'
-      publicPath: 'app-extension-qpdfviewer',
+      publicPath: 'quasar-ui-qpdfviewer',
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -54,7 +55,7 @@ module.exports = function (ctx) {
       // Applies only if "transpile" is set to true.
       // transpileDependencies: [],
 
-      // vueCompiler: true,
+      // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
       // showProgress: false,
       // gzip: true,
@@ -63,6 +64,7 @@ module.exports = function (ctx) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
 
+      // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
         cfg.module.rules.push({
           enforce: 'pre',
@@ -74,38 +76,45 @@ module.exports = function (ctx) {
 
       chainWebpack (chain) {
         chain.resolve.alias.merge({
+          ui: path.resolve(__dirname, '../ui/src/index.js'),
+          '@quasar/quasar-ui-qdfviewer/src/index.sass': path.resolve(__dirname, '../ui/src/index.sass'),
+          '@quasar/quasar-ui-qdfviewer': path.resolve(__dirname, '../ui/src'),
           examples: path.resolve(__dirname, './src/examples')
         })
       }
     },
 
+    // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
       port: 8080,
       open: true // opens browser window automatically
     },
 
+    // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
-      config: {
-        dark: 'auto'
-      },
+      config: {},
 
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
       // * 'all'  - Manually specify what to import
-      importStrategy: '',
+      importStrategy: 'auto',
+
+      // For special cases outside of where "auto" importStrategy can have an impact
+      // (like functional components as one of the examples),
+      // you can manually specify Quasar components/directives to be available everywhere:
+      //
+      // components: [],
+      // directives: [],
 
       // Quasar plugins
-      plugins: [
-        'Notify',
-        'Platform',
-        'Screen'
-      ]
+      plugins: []
     },
 
-    // animations: 'all' --- includes all animations
+    // animations: 'all', // --- includes all animations
+    // https://quasar.dev/options/animations
     animations: [],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
@@ -158,7 +167,6 @@ module.exports = function (ctx) {
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-      id: 'org.cordova.quasar.app'
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -186,7 +194,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'q-media-player'
+        appId: 'demo'
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

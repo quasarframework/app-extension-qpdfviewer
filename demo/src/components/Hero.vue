@@ -34,7 +34,7 @@ export default {
       byline: 'Created and maintained by Jeff Galbraith',
       bylineTwitter: 'https://twitter.com/jgalbraith64',
       quasarDesc: 'A Quasar Framework Component and App Extension',
-      locationUrl: 'https://github.com/quasarframework/app-extension-qpdfviewer',
+      locationUrl: 'https://github.com/quasarframework/quasar-ui-qpdfviewer',
       donateUrl: 'https://github.com/sponsors/hawkeye64',
       hasInteractiveDemo: false
     }
