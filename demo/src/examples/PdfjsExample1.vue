@@ -1,8 +1,6 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center page-static-height">
     <q-pdfviewer
-      v-model="show"
-      type="pdfjs"
       :src="updatedSrc"
       content-class="absolute"
     />
@@ -18,7 +16,6 @@ export default {
 
   data () {
     return {
-      show: true,
       src: 'pdf/pdf-test.pdf'
     }
   },

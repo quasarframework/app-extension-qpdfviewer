@@ -14,12 +14,13 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.8.2",
-    "quasar": "^1.12.8"
+    "quasar": "^1.12.8",
+    "pdfjs-dist": "^2.5.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.1",
     "@quasar/quasar-app-extension-qmarkdown": "^1.0.29",
-    "@quasar/quasar-app-extension-qpdfviewer": "file:../.",
+    "@quasar/quasar-app-extension-qpdfviewer": "file:..",
     "@quasar/quasar-app-extension-qribbon": "^1.0.0-beta.15",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
@@ -35,8 +36,9 @@
     "eslint-plugin-quasar": "^1.0.0",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
-    "quasar-app-extension-example-viewer": "^0.0.25",
-    "quasar-app-extension-json-api-viewer": "^1.0.15"
+    "quasar-app-extension-example-viewer": "0.0.25",
+    "quasar-app-extension-json-api-viewer": "^1.0.16",
+    "worker-loader": "^3.0.2"
   },
   "engines": {
     "node": ">= 8.9.0",

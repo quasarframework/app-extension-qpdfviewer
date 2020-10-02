@@ -1,104 +1,227 @@
 import Vue from 'vue'
-import ModelToggleMixin from 'quasar/src/mixins/model-toggle.js'
+import { QIcon, QLinearProgress } from 'quasar'
+import Viewer, { LINK_TARGET_MODES } from './Viewer.js'
+import { QPdfToolbarDesktop, QPdfToolbarMobile } from './pdf-toolbar.js'
+import icons from './icons'
+
+const QPdfError = {
+  props: {
+    message: String
+  },
+  render (h) {
+    return h('div', {
+      staticClass: 'q-pdf-error justify-center items-center row q-col-gutter-x-xs'
+    }, [
+      h(QIcon, {
+        staticClass: 'text-warning',
+        props: {
+          name: icons.warning,
+          size: '1.5em'
+        }
+      }),
+      h('span', this.message)
+    ])
+  }
+}
 
 export default Vue.extend({
   name: 'QPdfviewer',
-
-  mixins: [ ModelToggleMixin ],
-
   props: {
-    src: String,
-    type: {
-      type: String,
-      default: 'html5',
-      validator: v => ['html5', 'pdfjs'].indexOf(v) !== -1
+    /* maxImageSize: {
+      type: Number,
+      default: 1024 * 1024
+    }, */
+    onlyCssZoom: {
+      type: Boolean
     },
-    errorString: {
-      type: String,
-      default: 'This browser does not support PDFs. Download the PDF to view it:'
+    textLayer: {
+      type: Boolean,
+      default: true
     },
-    contentStyle: [String, Object, Array],
-    contentClass: [String, Object, Array],
-    innerContentStyle: [String, Object, Array],
-    innerContentClass: [String, Object, Array]
+    scaleDelta: {
+      type: Number,
+      default: 1.1
+    },
+    minScale: {
+      type: Number,
+      default: 0.5
+    },
+    maxScale: {
+      type: Number,
+      default: 10.0
+    },
+    scale: {
+      type: [Number, String],
+      default: 'auto'
+    },
+    singlePage: {
+      type: Boolean
+    },
+    mode: {
+      type: String,
+      default: 'auto',
+      validator: v => ['desktop', 'mobile', 'auto'].indexOf(v) !== -1
+    },
+    linkTarget: {
+      type: String,
+      validator: v => LINK_TARGET_MODES.indexOf(v) !== -1 // NONE, SELF, BLANK, PARENT, TOP
+    },
+    src: {
+      type: String
+    }
   },
-
   data () {
     return {
-      hashId: 'q-pdfviewer-' + Math.random().toString(36).substr(2, 9)
+      previousDisabled: false,
+      nextDisabled: false,
+      title: '',
+      loadingBar: {
+        percent: 0,
+        hide: false
+      },
+      pagesCount: 0,
+      page: 0,
+      errorMessage: ''
     }
   },
-
+  computed: {
+    isMobile () {
+      if (this.mode === 'mobile') {
+        return true
+      }
+      if (this.mode === 'desktop') {
+        return false
+      }
+      return this.$q.screen.lt.sm
+    },
+    hasError () {
+      return this.errorMessage !== ''
+    }
+  },
   methods: {
-    __renderObject (h) {
-      return h('object', {
-        class: this.innerContentClass,
-        style: this.innerContentStyle,
-        attrs: {
-          id: this.hashId,
-          data: this.src,
-          type: 'application/pdf',
-          width: '100%',
-          height: '100%'
+    toggleScrollMode () {
+      this.viewer.toggleScroll()
+    },
+    progress (level) {
+      const percent = Math.round(level * 100)
+      // Updating the bar if value increases.
+      if (percent > this.loadingBar.percent || isNaN(percent)) {
+        this.loadingBar.percent = percent
+      }
+    },
+    onPrevious (event) {
+      this.viewer.page--
+    },
+    onNext (event) {
+      this.viewer.page++
+    },
+    onZoomIn (ticks) {
+      this.viewer.zoomIn(this.maxScale, this.scaleDelta, ticks)
+    },
+    onZoomOut (ticks) {
+      this.viewer.zoomOut(this.minScale, this.scaleDelta, ticks)
+    },
+    onChangePage (value) {
+      this.viewer.changePage(value)
+    },
+    onSearch (query) {
+      this.viewer.search(query)
+    },
+    init () {
+      this.loadingBar.hide = false
+      this.viewer = new Viewer({
+        container: this.$refs.container,
+        onlyCssZoom: this.onlyCssZoom,
+        textLayer: this.textLayer,
+        scale: this.scale,
+        linkTarget: this.linkTarget,
+        singlePage: this.singlePage
+      })
+      this.viewer.on('error', (message) => {
+        this.errorMessage = message
+      })
+      this.viewer.on('document:init', (data) => {
+        this.page = data.page
+        this.pagesCount = data.pagesCount
+      })
+      this.viewer.on('pages:changed', (page) => {
+        this.page = page
+        this.previousDisabled = page <= 1
+        this.nextDisabled = page >= this.pagesCount
+      })
+      this.viewer.on('title', (title) => {
+        this.title = title
+      })
+    },
+    async openDocument (url) {
+      this.errorMessage = ''
+      this.viewer.open({ url })
+    }
+  },
+  watch: {
+    src (value) {
+      this.openDocument(value)
+    }
+  },
+  async mounted () {
+    this.init()
+    await this.$nextTick()
+    this.openDocument(this.src)
+  },
+  created () {
+    this.viewer = null
+  },
+  beforeDestroy () {
+    this.close()
+  },
+  render (h) {
+    const toolbar = this.isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
+    return h('div', {
+      staticClass: 'q-pdf-viewer column no-wrap',
+      class: {
+        'q-pdf-viewer-mobile': this.isMobile
+      }
+    }, [
+      this.hasError !== true && h(toolbar, {
+        props: {
+          title: this.title,
+          page: this.page,
+          pagesCount: this.pagesCount
         },
         on: {
-          ...this.$listeners
+          changePage: this.onChangePage,
+          toggleScrollMode: this.toggleScrollMode,
+          zoomIn: this.onZoomIn,
+          zoomOut: this.onZoomOut,
+          pagePrevious: this.onPrevious,
+          pageNext: this.onNext,
+          search: this.onSearch
         }
       }, [
-        // browser object not supported, try iframe
-        this.__renderIFrame(h)
-      ])
-    },
-
-    __renderIFrame (h) {
-      return h('iframe', {
-        staticClass: 'q-pdfviewer__iframe',
-        attrs: {
-          src: this.src,
-          width: '100%',
-          height: '100%'
-        }
-      }, [
-        // iframe not supported either, give user a link to download
-        this.__renderText(h)
-      ])
-    },
-
-    __renderIFramePDFJS (h) {
-      return h('iframe', {
-        staticClass: 'q-pdfviewer__iframe',
-        attrs: {
-          src: 'pdfjs/web/viewer.html?file=' + this.src
-        }
-      }, [
-        // iframe not supported either, give user a link to download
-        this.__renderText(h)
-      ])
-    },
-
-    __renderText (h) {
-      // TODO: ????
-      return h('p', 'This browser does not support PDFs. Download the PDF to view it:', [
-        h('a', {
-          attrs: {
-            href: this.src,
-            target: '_blank'
+        this.loadingBar.hide !== true && h(QLinearProgress, {
+          staticClass: 'absolute-bottom bg-primary',
+          props: {
+            value: this.loadingBar.percent
           }
         })
-      ])
-    }
-  },
-
-  render (h) {
-    if (this.value === true && this.src !== void 0 && this.src.length > 0) {
-      return h('div', {
-        staticClass: 'q-pdfviewer',
-        class: this.contentClass,
-        style: this.contentStyle
+      ]),
+      h('div', {
+        staticClass: 'q-pdf-viewer-container col',
+        ref: 'container'
       }, [
-        this.$q.platform.is.electron || this.type === 'pdfjs' ? this.__renderIFramePDFJS(h) : this.__renderObject(h)
+        h('div', {
+          staticClass: 'q-pdf'
+        }),
+        this.errorMessage !== '' && h('div', {
+          staticClass: 'q-pdf-error-container'
+        }, [
+          h(QPdfError, {
+            props: {
+              message: this.errorMessage
+            }
+          })
+        ])
       ])
-    }
-    return ''
+    ])
   }
 })

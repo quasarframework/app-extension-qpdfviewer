@@ -4,6 +4,14 @@
  *
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
+function extendWebpack (cfg, { isClient, isServer }, api) {
+  cfg.module.rules.push({
+    test: /\.worker\.js$/,
+    use: {
+      loader: 'worker-loader'
+    }
+  })
+}
 
 const extendConf = function (conf) {
   // make sure qpdfviewer boot file is registered
@@ -27,4 +35,7 @@ module.exports = function (api) {
 
   // extend quasar.conf
   api.extendQuasarConf(extendConf)
+
+  // extend webpack config
+  api.extendWebpack(extendWebpack)
 }
