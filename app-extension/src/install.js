@@ -11,7 +11,7 @@ function extendPackageJson (api) {
   }
 
   const devDependencies = {
-    'worker-loader': '^3.0.2'
+    'worker-loader': '^3.0.3'
   }
 
   api.extendPackageJson({
