@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <QPdfviewer />
+    <q-pdfviewer src="https://www.orimi.com/pdf-test.pdf" />
   </q-page>
 </template>
 
