@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "core-js": "^3.0.0"
+    "core-js": "^3.6.5",
+    "pdfjs-dist": "^2.5.207"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0"
