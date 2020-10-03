@@ -10,7 +10,7 @@ import {
 import iconSet from './icon-set'
 import lang from './lang'
 
-const lang = lang['en']
+const defaultLang = lang['en']
 
 const selection = (element) => {
   const length = element.value ? element.value.length : 0
@@ -133,7 +133,7 @@ export const QPdfToolbarDesktop = {
               autofocus: true
             },
             attrs: {
-              placeholder: lang.search
+              placeholder: defaultLang.search
             },
             on: {
               input: (value) => {
