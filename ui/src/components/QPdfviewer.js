@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { QIcon, QLinearProgress } from 'quasar'
 import Viewer, { LINK_TARGET_MODES } from './Viewer.js'
 import { QPdfToolbarDesktop, QPdfToolbarMobile } from './pdf-toolbar.js'
@@ -24,7 +23,7 @@ const QPdfError = {
   }
 }
 
-export default Vue.extend({
+export default {
   name: 'QPdfviewer',
   props: {
     /* maxImageSize: {
@@ -224,4 +223,4 @@ export default Vue.extend({
       ])
     ])
   }
-})
+}
