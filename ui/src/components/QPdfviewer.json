@@ -1,11 +1,8 @@
 {
-  "type": "component",
+  "meta": {
+    "docsUrl": "https://quasarframework.github.io/quasar-ui-qpdfviewer/docs"
+  },
   "props": {
-    "value": {
-      "type": "Boolean",
-      "category": "behavior",
-      "desc": "Use v-model to control visible state"
-    },
     "src": {
       "type": "String",
       "category": "model",
@@ -14,58 +11,120 @@
         "src=\"https://www.orimi.com/pdf-test.pdf\""
       ]
     },
-    "type": {
+    "only-css-zoom": {
+      "type": "Boolean",
+      "category": "behavior",
+      "desc": ""
+    },
+    "text-layer": {
+      "type": "Boolean",
+      "category": "behavior",
+      "default": "true",
+      "desc": ""
+    },
+    "scale-delta": {
+      "type": "Number",
+      "category": "behavior",
+      "desc": "",
+      "default": "1.1",
+      "examples": [ "2.0" ]
+    },
+    "min-scale": {
+      "type": "Number",
+      "category": "behavior",
+      "desc": "",
+      "default": "0.5",
+      "examples": [ "1.0" ]
+    },
+    "max-scale": {
+      "type": "Number",
+      "category": "behavior",
+      "desc": "",
+      "default": "10.0",
+      "examples": [ "5.0" ]
+    },
+    "scale": {
+      "type": ["Number", "String"],
+      "category": "behavior",
+      "desc": "",
+      "default": "auto",
+      "examples": [ "" ]
+    },
+    "single-page": {
+      "type": "Boolean",
+      "category": "behavior",
+      "default": "true",
+      "desc": ""
+    },
+    "mode": {
+      "type": "String",
+      "category": "model",
+      "desc": "",
+      "default": "auto",
+      "values": ["desktop", "mobile", "auto"],
+      "examples": [ "" ]
+    },
+    "link-target": {
       "type": "String",
       "category": "behavior",
-      "desc": "The type of pdf viewer engine to use",
-      "values": ["html5", "pdfjs"],
-      "default": "html5",
-      "examples": [
-        "type=\"html5\""
-      ]
+      "desc": "",
+      "values": ["none", "self", "blank", "parent", "top"],
+      "examples": [ "" ]
+    }
+  },
+  "methods": {
+    "prevPage": {
+      "desc": "Triggers component to display previous page, if one is available",
+      "__exemption": [ "examples" ]
     },
-    "error-string": {
-      "type": "String",
-      "category": "error",
-      "desc": "Used to display an error string should all efforts fail to open the PDF",
-      "default": "This browser does not support PDFs. Download the PDF to view it:",
-      "examples": [ "error-string=\"Download the PDF to view it\"" ]
+    "nextPage": {
+      "desc": "Triggers component to display next page, if one is available",
+      "__exemption": [ "examples" ]
     },
-    "content-class": {
-      "type": [ "Array", "String", "Object" ],
-      "category": "style",
-      "desc": "Class definitions to be attributed to the PDF container",
-      "examples": [
-        "content-class=\"my-special-class\"",
-        ":content-class=\"{ 'my-special-class': <condition> }\""
-      ]
+    "zoomIn": {
+      "desc": "Zooms in on the PDF document",
+      "__exemption": [ "examples" ]
     },
-    "content-style": {
-      "type": [ "Array", "String", "Object" ],
-      "category": "style",
-      "desc": "Style definitions to be attributed to the PDF container",
-      "examples": [
-        "content-style=\"background-color: #ff0000\"",
-        ":content-style=\"{ backgroundColor: '#ff0000' }\""
-      ]
+    "zoomOut": {
+      "desc": "Zooms out on the PDF document",
+      "__exemption": [ "examples" ]
     },
-    "inner-content-class": {
-      "type": [ "Array", "String", "Object" ],
-      "category": "style",
-      "desc": "Class definitions to be attributed to the PDF object",
-      "examples": [
-        "inner-content-class=\"my-special-class\"",
-        ":inner-content-class=\"{ 'my-special-class': <condition> }\""
-      ]
+    "toggleScrollMode": {
+      "desc": "Toggles the scroll mode",
+      "__exemption": [ "examples" ]
     },
-    "inner-content-style": {
-      "type": [ "Array", "String", "Object" ],
-      "category": "style",
-      "desc": "Style definitions to be attributed to the PDF object",
-      "examples": [
-        "inner-content-style=\"background-color: #ff0000\"",
-        ":inner-content-style=\"{ backgroundColor: '#ff0000' }\""
-      ]
+    "search": {
+      "desc": "Performs a search on current PDF document",
+      "params": {
+        "query": {
+          "type": "String",
+          "desc": "The string to search for in the current PDF document",
+          "examples": ["canada"]
+        }
+      },
+      "__exemption": [ "examples" ]
+    },
+    "changePage": {
+      "desc": "Change to the specified page if it exists",
+      "params": {
+        "page": {
+          "type": "Number",
+          "desc": "The page number to change too",
+          "examples": ["5"]
+        }
+      },
+      "__exemption": [ "examples" ]
+    },
+    "openDocument": {
+      "desc": "Opens a PDF document",
+      "params": {
+        "url": {
+          "type": "String",
+          "desc": "The page number to change too",
+          "examples": ["https://www.orimi.com/pdf-test.pdf"]
+        }
+      },
+      "__exemption": [ "examples" ]
     }
   }
 }
