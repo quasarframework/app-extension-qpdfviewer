@@ -123,12 +123,15 @@ export default class Viewer extends EventBus {
     const url = params.url
     this.setTitleUsingUrl(url)
 
-    // Loading document.
+    // Loading document
+    // https://github.com/mozilla/pdf.js/issues/10377#issuecomment-540490640
     this.loadingTask = PDFJS.getDocument({
       url
       // maxImageSize: this.maxImageSize
       // cMapUrl: CMAP_URL,
       // cMapPacked: CMAP_PACKED,
+    }).promise.then(pdf => {
+      //
     })
 
     this.loadingTask.onProgress = (progressData) => {
@@ -136,7 +139,9 @@ export default class Viewer extends EventBus {
     }
 
     try {
-      this.document = await this.loadingTask.promise
+      this.document = await this.loadingTask.promise.then(pdf => {
+        //
+      })
       // Document loaded, specifying document for the viewer.
       this.viewer.setDocument(this.document)
       this.linkService.setDocument(this.document)
