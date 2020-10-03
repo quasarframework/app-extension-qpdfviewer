@@ -150,7 +150,7 @@ function genConfig (opts) {
 
   Object.assign(opts.rollup.output, {
     banner: buildConf.banner,
-    globals: { vue: 'Vue', quasar: 'Quasar', 'pdfjs-dist/build/pdf.worker.js': 'PdfjsWorker', 'pdfjs-dist/web/pdf_viewer.js': 'PDFViewerCore' }
+    globals: { vue: 'Vue', quasar: 'Quasar', 'pdf-dist': 'PDFJS', 'pdfjs-dist/build/pdf.worker.js': 'PdfjsWorker', 'pdfjs-dist/web/pdf_viewer.js': 'PDFViewerCore' }
   })
 
   return opts
