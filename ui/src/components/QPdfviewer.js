@@ -72,7 +72,7 @@ export default Vue.extend({
   },
   data () {
     return {
-      previousDisabled: false,
+      prevDisabled: false,
       nextDisabled: false,
       title: '',
       loadingBar: {
@@ -85,7 +85,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    isMobile () {
+    __isMobile () {
       if (this.mode === 'mobile') {
         return true
       }
@@ -94,7 +94,7 @@ export default Vue.extend({
       }
       return this.$q.screen.lt.sm
     },
-    hasError () {
+    __hasError () {
       return this.errorMessage !== ''
     }
   },
@@ -102,32 +102,32 @@ export default Vue.extend({
     toggleScrollMode () {
       this.viewer.toggleScroll()
     },
-    progress (level) {
+    __progress (level) {
       const percent = Math.round(level * 100)
       // Updating the bar if value increases.
       if (percent > this.loadingBar.percent || isNaN(percent)) {
         this.loadingBar.percent = percent
       }
     },
-    onPrevious (event) {
+    prevPage (event) {
       this.viewer.page--
     },
-    onNext (event) {
+    nextPage (event) {
       this.viewer.page++
     },
-    onZoomIn (ticks) {
+    zoomIn (ticks) {
       this.viewer.zoomIn(this.maxScale, this.scaleDelta, ticks)
     },
-    onZoomOut (ticks) {
+    zoomOut (ticks) {
       this.viewer.zoomOut(this.minScale, this.scaleDelta, ticks)
     },
-    onChangePage (value) {
+    changePage (value) {
       this.viewer.changePage(value)
     },
-    onSearch (query) {
+    search (query) {
       this.viewer.search(query)
     },
-    init () {
+    __init () {
       this.loadingBar.hide = false
       this.viewer = new Viewer({
         container: this.$refs.container,
@@ -146,7 +146,7 @@ export default Vue.extend({
       })
       this.viewer.on('pages:changed', (page) => {
         this.page = page
-        this.previousDisabled = page <= 1
+        this.prevDisabled = page <= 1
         this.nextDisabled = page >= this.pagesCount
       })
       this.viewer.on('title', (title) => {
@@ -164,7 +164,7 @@ export default Vue.extend({
     }
   },
   async mounted () {
-    this.init()
+    this.__init()
     await this.$nextTick()
     this.openDocument(this.src)
   },
@@ -175,27 +175,27 @@ export default Vue.extend({
     this.close()
   },
   render (h) {
-    const toolbar = this.isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
+    const toolbar = this.__isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
     return h('div', {
       staticClass: 'q-pdf-viewer column no-wrap',
       class: {
-        'q-pdf-viewer-mobile': this.isMobile
+        'q-pdf-viewer-mobile': this.__isMobile
       }
     }, [
-      this.hasError !== true && h(toolbar, {
+      this.__hasError !== true && h(toolbar, {
         props: {
           title: this.title,
           page: this.page,
           pagesCount: this.pagesCount
         },
         on: {
-          changePage: this.onChangePage,
+          changePage: this.changePage,
           toggleScrollMode: this.toggleScrollMode,
-          zoomIn: this.onZoomIn,
-          zoomOut: this.onZoomOut,
-          pagePrevious: this.onPrevious,
-          pageNext: this.onNext,
-          search: this.onSearch
+          zoomIn: this.zoomIn,
+          zoomOut: this.zoomOut,
+          pagePrevious: this.prevPage,
+          pageNext: this.nextPage,
+          search: this.search
         }
       }, [
         this.loadingBar.hide !== true && h(QLinearProgress, {
