@@ -32,8 +32,8 @@ const cjsConfig = {
 const rollupPlugins = [
   nodeResolve(nodeResolveConfig),
   json(),
-  cjs(cjsConfig),
-  buble(bubleConfig)
+  cjs(cjsConfig)
+  // buble(bubleConfig)
 ]
 
 const builds = [
@@ -145,12 +145,12 @@ function build (builds) {
 function genConfig (opts) {
   Object.assign(opts.rollup.input, {
     plugins: rollupPlugins,
-    external: [ 'vue', 'quasar' ]
+    external: [ 'vue', 'quasar', 'pdf-dist', 'pdfjs-dist/web/pdf_viewer.js', 'pdfjs-dist/build/pdf.worker.js' ]
   })
 
   Object.assign(opts.rollup.output, {
     banner: buildConf.banner,
-    globals: { vue: 'Vue', quasar: 'Quasar' }
+    globals: { vue: 'Vue', quasar: 'Quasar', 'pdfjs-dist/build/pdf.worker.js': 'PdfjsWorker', 'pdfjs-dist/web/pdf_viewer.js': 'PDFViewerCore' }
   })
 
   return opts
