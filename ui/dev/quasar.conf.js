@@ -53,6 +53,15 @@ module.exports = function (ctx) {
         chain.resolve.alias.merge({
           'ui': path.resolve(__dirname, '../src/index.js')
         })
+      },
+
+      extendWebpack (cfg) {
+        cfg.module.rules.push({
+          test: /\.worker\.js$/,
+          use: {
+            loader: 'worker-loader'
+          }
+        })
       }
     },
 
