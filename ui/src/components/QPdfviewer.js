@@ -83,6 +83,7 @@ export default {
       errorMessage: ''
     }
   },
+
   computed: {
     __isMobile () {
       if (this.mode === 'mobile') {
@@ -93,14 +94,17 @@ export default {
       }
       return this.$q.screen.lt.sm
     },
+
     __hasError () {
       return this.errorMessage !== ''
     }
   },
+
   methods: {
     toggleScrollMode () {
       this.viewer.toggleScroll()
     },
+
     __progress (level) {
       const percent = Math.round(level * 100)
       // Updating the bar if value increases.
@@ -108,24 +112,34 @@ export default {
         this.loadingBar.percent = percent
       }
     },
+
     prevPage (event) {
+      if (this.prevDisabled === true) return
       this.viewer.page--
     },
+
     nextPage (event) {
+      if (this.nextDisabled === true) return
       this.viewer.page++
     },
+
     zoomIn (ticks) {
       this.viewer.zoomIn(this.maxScale, this.scaleDelta, ticks)
     },
+
     zoomOut (ticks) {
       this.viewer.zoomOut(this.minScale, this.scaleDelta, ticks)
     },
+
     changePage (value) {
+      if (value < 1 || value > this.pagesCount) return
       this.viewer.changePage(value)
     },
+
     search (query) {
       this.viewer.search(query)
     },
+
     __init () {
       this.loadingBar.hide = false
       this.viewer = new Viewer({
@@ -136,43 +150,53 @@ export default {
         linkTarget: this.linkTarget,
         singlePage: this.singlePage
       })
+
       this.viewer.on('error', (message) => {
         this.errorMessage = message
       })
+
       this.viewer.on('document:init', (data) => {
         this.page = data.page
         this.pagesCount = data.pagesCount
       })
+
       this.viewer.on('pages:changed', (page) => {
         this.page = page
         this.prevDisabled = page <= 1
         this.nextDisabled = page >= this.pagesCount
       })
+
       this.viewer.on('title', (title) => {
         this.title = title
       })
     },
+
     async openDocument (url) {
       this.errorMessage = ''
       this.viewer.open({ url })
     }
   },
+
   watch: {
     src (value) {
       this.openDocument(value)
     }
   },
+
   async mounted () {
     this.__init()
     await this.$nextTick()
     this.openDocument(this.src)
   },
+
   created () {
     this.viewer = null
   },
+
   beforeDestroy () {
     this.close()
   },
+
   render (h) {
     const toolbar = this.__isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
     return h('div', {
