@@ -5,6 +5,13 @@ $pdf-page-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12)
 $pdf-img-shadow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATBAMAAACAfiv/AAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABWNxwqAAAACHRSTlMABAkNERUaTdY/dVwAAABZSURBVAjXY8AJBAUF4SwhRUEoU0lJSVEAxGIUUjY2VhKECBq7OBspgpnKJqEhxmAVQsquaanOMGY6lCkIFlUCM5UgahEmCEDNNVISRLENJAxyA8JlAjidDQAGgw7F1mt6KgAAAABJRU5ErkJggg=='
 $border-radius: 4px
 
+// taken from quasar
+$shadow-color         : #000 !default
+$elevation-umbra      : rgba($shadow-color, .2) !default
+$elevation-penumbra   : rgba($shadow-color, .14) !default
+$elevation-ambient    : rgba($shadow-color, .12) !default
+$shadow-2  : 0 1px 5px $elevation-umbra, 0 2px 2px $elevation-penumbra, 0 3px 1px -2px $elevation-ambient !default
+
 .q-pdf-viewer
   height: 100%
   width: 100%
