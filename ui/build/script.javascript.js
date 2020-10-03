@@ -32,7 +32,7 @@ const cjsConfig = {
 const rollupPlugins = [
   nodeResolve(nodeResolveConfig),
   json(),
-  // cjs(cjsConfig),
+  cjs(cjsConfig),
   buble(bubleConfig)
 ]
 
