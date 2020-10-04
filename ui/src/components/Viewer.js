@@ -130,8 +130,6 @@ export default class Viewer extends EventBus {
       // maxImageSize: this.maxImageSize
       // cMapUrl: CMAP_URL,
       // cMapPacked: CMAP_PACKED,
-    }).promise.then(pdf => {
-      //
     })
 
     this.loadingTask.onProgress = (progressData) => {
@@ -139,9 +137,7 @@ export default class Viewer extends EventBus {
     }
 
     try {
-      this.document = await this.loadingTask.promise.then(pdf => {
-        //
-      })
+      this.document = await this.loadingTask
       // Document loaded, specifying document for the viewer.
       this.viewer.setDocument(this.document)
       this.linkService.setDocument(this.document)
