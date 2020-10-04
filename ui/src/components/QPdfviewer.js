@@ -9,7 +9,7 @@ const QPdfError = {
   },
   render (h) {
     return h('div', {
-      staticClass: 'q-pdf-error justify-center items-center row q-col-gutter-x-xs'
+      staticClass: 'q-pdf-error row justify-center items-center no-wrap q-col-gutter-x-xs'
     }, [
       h(QIcon, {
         staticClass: 'text-warning',
@@ -67,7 +67,9 @@ export default {
     },
     src: {
       type: String
-    }
+    },
+    contentStyle: [String, Object, Array],
+    contentClass: [String, Object, Array]
   },
   data () {
     return {
@@ -200,10 +202,9 @@ export default {
   render (h) {
     const toolbar = this.__isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
     return h('div', {
-      staticClass: 'q-pdf-viewer column no-wrap',
-      class: {
-        'q-pdf-viewer-mobile': this.__isMobile
-      }
+      staticClass: 'q-pdf-viewer column no-wrap' + (this.__isMobile ? ' q-pdf-viewer-mobile' : ''),
+      class: this.contentClass,
+      style: this.contentStyle
     }, [
       this.__hasError !== true && h(toolbar, {
         props: {
