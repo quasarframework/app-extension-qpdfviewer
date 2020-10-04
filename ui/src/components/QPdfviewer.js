@@ -196,7 +196,7 @@ export default {
   },
 
   beforeDestroy () {
-    this.close()
+    this.viewer.close()
   },
 
   render (h) {
