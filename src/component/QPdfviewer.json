@@ -1,5 +1,8 @@
 {
+  "mixins": [ "composables/private/use-model-toggle" ],
+
   "type": "component",
+
   "props": {
     "value": {
       "type": "Boolean",
