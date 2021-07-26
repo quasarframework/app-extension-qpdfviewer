@@ -172,7 +172,7 @@ export default Vue.extend({
     this.viewer = null
   },
   beforeDestroy () {
-    this.close()
+    this.viewer.close()
   },
   render (h) {
     const toolbar = this.isMobile ? QPdfToolbarMobile : QPdfToolbarDesktop
