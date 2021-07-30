@@ -20,7 +20,7 @@ const extendConf = function (conf) {
 
 module.exports = function (api) {
   // quasar compatibility check
-  api.compatibleWith('@quasar/app', '^3.0.0')
+  api.compatibleWith('quasar', '^2.0.0')
 
   // register JSON api
   api.registerDescribeApi('QPdfviewer', './component/QPdfviewer.json')
