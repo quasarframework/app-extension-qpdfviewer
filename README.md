@@ -1,4 +1,4 @@
-QPdfviewer (Vue Plugin, UMD and Quasar App Extension)
+QPdfviewer (Quasar App Extension)
 ===
 
 ![@quasar/quasar-app-extension-qpdfviewer](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qpdfviewer/next?label=@quasar/quasar-app-extension-qpdfviewer)
