@@ -1,10 +1,8 @@
 {
-  "mixins": [ "composables/private/use-model-toggle" ],
-
   "type": "component",
 
   "props": {
-    "value": {
+    "model-value": {
       "type": "Boolean",
       "category": "behavior",
       "desc": "Use v-model to control visible state"
@@ -12,6 +10,7 @@
     "src": {
       "type": "String",
       "category": "model",
+      "required": "true",
       "desc": "Source path to the PDF",
       "examples": [
         "src=\"https://www.orimi.com/pdf-test.pdf\""
@@ -24,7 +23,8 @@
       "values": ["html5", "pdfjs"],
       "default": "html5",
       "examples": [
-        "type=\"html5\""
+        "type=\"html5\"",
+        "type=\"pdfjs\""
       ]
     },
     "error-string": {
