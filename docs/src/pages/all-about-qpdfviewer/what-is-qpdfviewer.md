@@ -23,3 +23,7 @@ QPdfviewer allows you to view PDF documents in your Quasar app.
 - Embedded PDF viewer
 - Choose native HTML5 PDF viewer or PDFjs
 - PDFjs works with Capacitor, Cordova and Electron
+
+## Breaking changes
+
+QPdfviewer no longer has a property (previously `v-model`) for showing/hiding the component. Use Vue's `v-if` or `v-show` instead.
