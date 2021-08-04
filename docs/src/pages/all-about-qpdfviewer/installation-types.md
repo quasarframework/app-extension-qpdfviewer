@@ -15,14 +15,14 @@ QPdfviewer ai a **pure** app extension. This means, it can only be used with the
 
 To add as an App Extension to your Quasar application, run the following (in your Quasar app folder):
 ```
-$ quasar ext add @quasar/qpdfviewer
+$ quasar ext add @quasar/qpdfviewer@next
 ```
 
 ### Uninstall
 
 To remove as an App Extension from your Quasar application, run the following (in your Quasar app folder):
 ```
-$ quasar ext remove @quasar/qpdfviewer
+$ quasar ext remove @quasar/qpdfviewer@next
 ```
 
 ### Describe
