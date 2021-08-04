@@ -45,6 +45,18 @@ components:
   codepen-title="QPdfviewer"
 />
 
+### HTML5 with QDialog
+
+::: tip
+Try adjusting your browser size to test the responsiveness of the QDialog
+:::
+
+<example-viewer
+  title=""
+  file="Html5WithQDialog"
+  codepen-title="QPdfviewer"
+/>
+
 ## QPdfviewer PDFjs Examples
 
 ### PDFjs Example 1
@@ -82,3 +94,14 @@ components:
   codepen-title="QPdfviewer"
 />
 
+### PDFjs with QDialog
+
+::: tip
+Try adjusting your browser size to test the responsiveness of the QDialog
+:::
+
+<example-viewer
+  title=""
+  file="PdfjsWithQDialog"
+  codepen-title="QPdfviewer"
+/>
