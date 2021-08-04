@@ -12,16 +12,10 @@
  import { defineComponent, h } from "vue"
  import { useQuasar } from "quasar"
 
- // Replaces mixins from Vue2
- import useModelToggle, { useModelToggleProps, useModelToggleEmits } from "quasar/src/composables/private/use-model-toggle.js"
-
  export default defineComponent({
    name: "QPdfviewer",
 
    props: {
-     // Replaces this.value
-     modelValue: Boolean,
-     // Unchanged
      src: String,
      type: {
        type: String,
@@ -37,14 +31,9 @@
      contentClass: [String, Object, Array],
      innerContentStyle: [String, Object, Array],
      innerContentClass: [String, Object, Array],
-
-     // Inject mixins using composition
-     ...useModelToggleProps,
    },
 
    emits: [
-     // Inject mixins using composition
-     ...useModelToggleEmits
    ],
 
    data() {
@@ -108,7 +97,7 @@
            })
        }
 
-     if (prop.modelValue && prop.src !== void 0 && prop.src.length > 0) {
+     if (prop.src !== void 0 && prop.src.length > 0) {
          return h(
            "div",
            {
@@ -128,8 +117,6 @@
 
    setup() {
      return {
-       // Inject mixins using composition
-       ...useModelToggle
      }
    }
  })

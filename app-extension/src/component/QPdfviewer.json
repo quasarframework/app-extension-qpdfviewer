@@ -2,11 +2,6 @@
   "type": "component",
 
   "props": {
-    "model-value": {
-      "type": "Boolean",
-      "category": "behavior",
-      "desc": "Use v-model to control visible state"
-    },
     "src": {
       "type": "String",
       "category": "model",
