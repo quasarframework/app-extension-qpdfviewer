@@ -1,7 +1,6 @@
 <template>
   <div class="q-pa-md q-gutter-sm" style="height: 600px;">
     <q-pdfviewer
-      v-model="show"
       type="pdfjs"
       :src="src"
     />
@@ -10,11 +9,8 @@
 
 <script>
 export default {
-  // name: 'PageName',
-
   data () {
     return {
-      show: true,
       src: '/pdf/gre_research_validity_data.pdf'
     }
   }
