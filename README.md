@@ -8,8 +8,8 @@ QPdfviewer (Quasar App Extension)
 
 # Structure
 * [/app-extension](app-extension) - Quasar app extension
-* [/docs](docs) - docs, demo and examples project
-* [live demo](https://quasarframework.github.io/quasar-app-extension-qpdfviewer/docs) - live docs, demo and examples
+* [/docs](docs) - sourc e to docs, demo and examples project
+* [live demo](https://qpdfviewer.netlify.app/) - live docs, demo and examples
 
 # Demo Workflow
 If you fork or download this project, make sure you have the Quasar CLI globally installed:

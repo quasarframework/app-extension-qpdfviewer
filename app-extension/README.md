@@ -1,8 +1,7 @@
 QPdfViewer (@quasar/qpdfviewer)
 ===
 
-![official icon](https://img.shields.io/badge/Quasar%201.0-Official%20UI%20App%20Extension-blue.svg)
-![npm (scoped)](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qpdfviewer.svg?style=plastic)
+![npm (scoped)](https://img.shields.io/npm/v/@quasar/quasar-app-extension-qpdfviewer@next?style=plastic)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/quasarframework/app-extension-qpdfviewer.svg)]()
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/quasarframework/app-extension-qpdfviewer.svg)]()
 [![npm](https://img.shields.io/npm/dt/@quasar/quasar-app-extension-qpdfviewer.svg)](https://www.npmjs.com/package/@quasar/quasar-app-extension-qpdfviewer)
@@ -17,13 +16,13 @@ QPdfViewer allows you to have PDF in your web pages.
 # Install
 To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
 ```
-quasar ext add @quasar/qpdfviewer
+quasar ext add @quasar/qpdfviewer@next
 ```
 
 # Uninstall
 To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):
 ```
-quasar ext remove @quasar/qpdfviewer
+quasar ext remove @quasar/qpdfviewer@next
 ```
 
 # Describe
@@ -32,14 +31,14 @@ You can use `quasar describe QPdfViewer`
 # Test Project
 In **demo** folder of **app-extension-qpdfviewer**.
 
-# Demo
-Can be found [here](https://quasarframework.github.io/app-extension-qpdfviewer)
+# Docs and Demo
+Can be found [here](https://qpdfviewer.netlify.app/)
 
 # Example Code
 Be sure to check out the Test Project for more examples.
+
 ```html
 <q-pdfviewer
-  v-model="show"
   src="'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf'"
   type="pdfjs"
   content-class="absolute"
@@ -50,7 +49,6 @@ or
 <template>
   <div class="container q-pa-lg">
     <q-pdfviewer
-      v-model="show"
       :src="src"
       type="html5"
       content-class="fit container"
@@ -64,12 +62,6 @@ export default {
   name: 'Container',
   props: {
     src: String
-  },
-
-  data () {
-    return {
-      show: true
-    }
   }
 }
 </script>
@@ -88,30 +80,33 @@ export default {
 ```
 
 Using blob data (for `type="html5"` only):
+
 ```js
 fetchPDF (payload) {
-  this.$axios.post('/my/url/to/pdf', payload, { responseType: 'blob' }).then(res => {
-    // create the blob
-    const blob = new Blob([res.data], { type: res.data.type })
-    // set reactive variable
-    pdfSrc = window.URL.createObjectURL(blob)
-  }).catch(err => {
-    this.$q.notify({
-      message: 'Error downloading PDF',
-      type: 'negative',
-      textColor: 'white',
-      color: 'negative',
-      icon: 'error',
-      closeBtn: 'close',
-      position: 'top'
+  axios.post('/my/url/to/pdf', payload, { responseType: 'blob' })
+    .then(res => {
+      // create the blob
+      const blob = new Blob([res.data], { type: res.data.type })
+      // set reactive variable
+      pdfSrc = window.URL.createObjectURL(blob)
     })
-  })
+    .catch(err => {
+      $q.notify({
+        message: 'Error downloading PDF',
+        type: 'negative',
+        textColor: 'white',
+        color: 'negative',
+        icon: 'error',
+        closeBtn: 'close',
+        position: 'top'
+      })
+    })
 }
 ```
 
 ---
 NOTE:
-  QPdfviewer now has support for native HTML5 PDF viewer and for PDFJS. Use `type="html5"` or `type="pdfjs"`. If you previously has this app extension, and want to use the pdfjs, you will need to re-install it. An update will not get the PDFJS for you. If you update, you can run `quasar ext invoke @quasar/qpdfviewer` instead of re-installing.
+  QPdfviewer now has support for native HTML5 PDF viewer and for PDFJS. Use `type="html5"` or `type="pdfjs"`. If you previously had this app extension, and want to use the pdfjs, you will need to re-install it. An update will not get the PDFJS for you. If you update, you can run `quasar ext invoke @quasar/qpdfviewer` instead of re-installing.
 
 ---
 NOTE:
@@ -128,7 +123,6 @@ NOTE:
 # QPdfviewer Vue Properties
 | Vue&nbsp;Property | Type	| Description |
 |---|---|---|
-| value | Boolean | Use v-model to toggle visiblity |
 | src | String | Path to the PDF source |
 | type | String | PDF engine to use (values: `html5` or `pdfjs`) |
 | error-string | String | Set this if you wish to change from the default error string |
