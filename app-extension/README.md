@@ -22,7 +22,7 @@ quasar ext add @quasar/qpdfviewer@next
 # Uninstall
 To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):
 ```
-quasar ext remove @quasar/qpdfviewer@next
+quasar ext remove @quasar/qpdfviewer
 ```
 
 # Describe
