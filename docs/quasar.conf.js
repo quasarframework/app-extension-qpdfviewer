@@ -28,8 +28,7 @@ module.exports = configure(function (ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
-      'app.sass',
-      'Markdown.sass'
+      'app.sass'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -55,12 +54,15 @@ module.exports = configure(function (ctx) {
         }
       },
 
-      // transpile: false,
+      transpile: true,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to true.
-      // transpileDependencies: [],
+      transpileDependencies: [
+        /quasar-ui-json-api-viewer[\\/]src/,
+        /quasar-ui-example-viewer[\\/]src/
+      ],
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
