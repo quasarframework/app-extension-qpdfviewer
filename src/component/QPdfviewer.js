@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import ModelToggleMixin from 'quasar/src/mixins/model-toggle.js'
 
-export default Vue.extend({
+export default {
   name: 'QPdfviewer',
 
   mixins: [ ModelToggleMixin ],
@@ -101,4 +101,4 @@ export default Vue.extend({
     }
     return ''
   }
-})
+}
