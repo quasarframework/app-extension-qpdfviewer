@@ -1,3 +1,5 @@
+> For Qpdfviewer that works with Quasar v2/Vue v3, head to the [next](https://github.com/quasarframework/app-extension-qpdfviewer/tree/next) branch or check out the [documentation](https://qpdfviewer.netlify.app/).
+
 QPdfViewer (@quasar/qpdfviewer)
 ===
 
