@@ -63,14 +63,14 @@ module.exports = function (ctx) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
 
-      extendWebpack (cfg) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        })
-      },
+      // extendWebpack (cfg) {
+      //   cfg.module.rules.push({
+      //     enforce: 'pre',
+      //     test: /\.(js|vue)$/,
+      //     loader: 'eslint-loader',
+      //     exclude: /node_modules/
+      //   })
+      // },
 
       chainWebpack (chain) {
         chain.resolve.alias.merge({

@@ -1,6 +1,6 @@
 {
   "name": "@quasar/quasar-app-extension-qpdfviewer",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0",
   "description": "QPdfviewer is an app extension for viewing PDF files",
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "main": "src/index.js",
@@ -34,11 +34,11 @@
     "viewer"
   ],
   "devDependencies": {
-    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-standard": "^6.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.2.0",
+    "eslint": "^8.6.0",
     "eslint-loader": "^4.0.2",
-    "eslint-plugin-vue": "^6.2.2"
+    "eslint-plugin-vue": "^8.2.0"
   },
   "dependencies": {}
 }
