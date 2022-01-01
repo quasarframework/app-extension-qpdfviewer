@@ -1,10 +1,11 @@
 <template>
   <router-link
     v-if="internal"
-    tag="a"
     :to="to"
     class="markdown-link"
-  ><slot></slot></router-link>
+  >
+    <slot />
+  </router-link>
   <a
     v-else
     :href="to"
@@ -12,14 +13,14 @@
     rel="noopener"
     class="markdown-link"
   >
-    <slot></slot>
+    <slot />
     <q-icon :name="mdiLaunch" />
   </a>
 </template>
 
 <script>
 import { computed } from 'vue'
-import { mdiLaunch } from '@quasar/extras/mdi-v5'
+import { mdiLaunch } from '@quasar/extras/mdi-v6'
 
 export default {
   name: 'MarkdownLink',
