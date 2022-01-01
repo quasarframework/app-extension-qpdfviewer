@@ -1,10 +1,10 @@
 {
-  "name": "quasar-app-extension-pdfviewer",
+  "name": "quasar-app-extension-pdfviewer-docs",
   "version": "0.0.1",
   "description": "QPdfviewer Docs and Examples",
   "productName": "QPdfviewer docs/examples",
   "cordovaId": "org.cordova.quasar.app",
-  "author": "Jeff Galbraith <jeff.galbraith@xendra.com>",
+  "author": "Jeff Galbraith <galbraith64@gmail.com>",
   "private": true,
   "scripts": {
     "build": "quasar build && cp ./src/404.html ./dist/spa",
@@ -13,30 +13,30 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.8.2",
-    "quasar": "^1.12.8"
+    "@quasar/extras": "^1.12.2",
+    "quasar": "^1.12.16"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.1",
-    "@quasar/quasar-app-extension-qmarkdown": "^1.0.29",
+    "@quasar/app": "^2.2.11",
+    "@quasar/quasar-app-extension-qmarkdown": "^1.4.3",
     "@quasar/quasar-app-extension-qpdfviewer": "file:../.",
     "@quasar/quasar-app-extension-qribbon": "^1.0.0-beta.15",
-    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-standard": "^6.1.0",
     "babel-eslint": "^10.1.0",
     "devtron": "^1.4.0",
     "electron": "^9.1.0",
-    "electron-debug": "^3.1.0",
-    "electron-devtools-installer": "^3.1.0",
-    "eslint": "^7.4.0",
+    "electron-debug": "^3.2.0",
+    "electron-devtools-installer": "^3.2.0",
+    "eslint": "^8.6.0",
     "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-quasar": "^1.0.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.2.2",
-    "quasar-app-extension-example-viewer": "^0.0.25",
-    "quasar-app-extension-json-api-viewer": "^1.0.15"
+    "eslint-plugin-standard": "^4.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "quasar-app-extension-example-viewer": "^1.1.1",
+    "quasar-app-extension-json-api-viewer": "^1.3.1"
   },
   "engines": {
     "node": ">= 8.9.0",
