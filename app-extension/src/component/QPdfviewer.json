@@ -9,6 +9,7 @@
     "src": {
       "type": "String",
       "category": "model",
+      "required": "true",
       "desc": "Source path to the PDF",
       "examples": [
         "src=\"https://www.orimi.com/pdf-test.pdf\""
@@ -21,7 +22,8 @@
       "values": ["html5", "pdfjs"],
       "default": "html5",
       "examples": [
-        "type=\"html5\""
+        "type=\"html5\"",
+        "type=\"pdfjs\""
       ]
     },
     "error-string": {
