@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-beween relative-position" style="min-height: calc(100vh - 98px);">
-    <div v-for="(source, index) in sources" :key="index" class="q-pa-xs pdf-container" style="wifth: 50%;">
+    <div v-for="(source, index) in sources" :key="index" class="q-pa-xs pdf-container" style="width: 50%;">
       <q-pdfviewer
         v-model="show"
         :src="updatedSrc(source)"
