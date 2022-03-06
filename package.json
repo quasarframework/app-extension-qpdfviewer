@@ -1,44 +1,15 @@
 {
-  "name": "@quasar/quasar-app-extension-qpdfviewer",
-  "version": "1.0.0-beta.8",
-  "description": "QPdfviewer is an app extension for viewing PDF files",
-  "author": "Jeff Galbraith <jeff@quasar.dev>",
-  "main": "src/index.js",
-  "scripts": {
-    "lint": "eslint --ext .js,.vue src",
-    "lint-fix": "eslint --ext .js,.vue src --fix",
-    "build-demo": "cd ./demo && yarn build && cd .. && cp ./_redirects ./demo/dist/spa && rm -r -f ./docs && cp -r ./demo/dist/spa/. ./docs",
-    "test": "echo \"No test specified\" && exit 0"
-  },
-  "engines": {
-    "node": ">= 8.9.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bugs": "https://github.com/quasarframework/app-extension-qpdfviewer/issues",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/quasarframework/app-extension-qpdfviewer.git"
-  },
-  "homepage": "https://github.com/quasarframework/app-extension-qpdfviewer",
-  "license": "MIT",
-  "keywords": [
-    "quasar",
-    "app",
-    "app extension",
-    "extension",
-    "pdf",
-    "viewer"
+  "name": "qpdfviewer",
+  "version": "1.0.0",
+  "description": "QPdfviewer mono-repo",
+  "workspaces": [
+    "demo",
+    "app-extension"
   ],
-  "devDependencies": {
-    "@vue/eslint-config-standard": "^5.1.2",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.2.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-vue": "^6.2.2"
-  },
-  "dependencies": {}
+  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build:all": "yarn && cd ./docs && quasar build"
+  }
 }
