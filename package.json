@@ -6,10 +6,13 @@
     "demo",
     "app-extension"
   ],
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "lint-fix": "eslint --ext .js,.vue src --fix",
+    "build-demo": "cd ./demo && yarn build && cd .. && cp ./_redirects ./demo/dist/spa && rm -rf ./docs && cp -r ./demo/dist/spa/. ./docs",
+    "test": "echo \"No test specified\" && exit 0"
+  },
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "license": "MIT",
-  "private": true,
-  "scripts": {
-    "build:all": "yarn && cd ./docs && quasar build"
-  }
+  "private": true
 }
