@@ -4,7 +4,7 @@ import ModelToggleMixin from 'quasar/src/mixins/model-toggle.js'
 export default Vue.extend({
   name: 'QPdfviewer',
 
-  mixins: [ ModelToggleMixin ],
+  mixins: [ModelToggleMixin],
 
   props: {
     src: String,
@@ -68,7 +68,9 @@ export default Vue.extend({
       return h('iframe', {
         staticClass: 'q-pdfviewer__iframe',
         attrs: {
-          src: 'pdfjs/web/viewer.html?file=' + this.src
+          src: 'pdfjs/web/viewer.html?file=' + encodeURIComponent(this.src),
+          width: '100%',
+          height: '100%'
         }
       }, [
         // iframe not supported either, give user a link to download
@@ -90,13 +92,15 @@ export default Vue.extend({
   },
 
   render (h) {
-    if (this.value === true && this.src !== void 0 && this.src.length > 0) {
+    if (this.value === true && this.src !== undefined && this.src.length > 0) {
       return h('div', {
         staticClass: 'q-pdfviewer',
         class: this.contentClass,
         style: this.contentStyle
       }, [
-        this.$q.platform.is.electron || this.type === 'pdfjs' ? this.__renderIFramePDFJS(h) : this.__renderObject(h)
+        this.$q.platform.is.electron || this.type === 'pdfjs'
+          ? this.__renderIFramePDFJS(h)
+          : this.__renderObject(h)
       ])
     }
     return ''
