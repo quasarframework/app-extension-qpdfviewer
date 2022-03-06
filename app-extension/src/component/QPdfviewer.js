@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import ModelToggleMixin from 'quasar/src/mixins/model-toggle.js'
 
 export default {
