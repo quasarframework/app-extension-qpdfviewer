@@ -37,6 +37,7 @@ Can be found [here](https://quasarframework.github.io/app-extension-qpdfviewer)
 
 # Example Code
 Be sure to check out the Test Project for more examples.
+
 ```html
 <q-pdfviewer
   v-model="show"
@@ -88,6 +89,7 @@ export default {
 ```
 
 Using blob data (for `type="html5"` only):
+
 ```js
 fetchPDF (payload) {
   this.$axios.post('/my/url/to/pdf', payload, { responseType: 'blob' }).then(res => {
