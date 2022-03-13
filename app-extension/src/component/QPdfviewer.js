@@ -19,18 +19,18 @@
      src: String,
      type: {
        type: String,
-       default: "html5",
-       validator: (v) => ["html5", "pdfjs"].indexOf(v) !== -1,
+       default: 'html5',
+       validator: (v) => ['html5', 'pdfjs'].indexOf(v) !== -1
      },
      errorString: {
        type: String,
        default:
-         "This browser does not support PDFs. Download the PDF to view it:",
+         "This browser does not support PDFs. Download the PDF to view it:"
      },
      contentStyle: [String, Object, Array],
      contentClass: [String, Object, Array],
      innerContentStyle: [String, Object, Array],
-     innerContentClass: [String, Object, Array],
+     innerContentClass: [String, Object, Array]
    },
 
    emits: [
@@ -38,7 +38,7 @@
 
    data() {
      return {
-         hashId: "q-pdfviewer-" + Math.random().toString(36).substr(2, 9)
+         hashId: 'q-pdfviewer-' + Math.random().toString(36).substr(2, 9)
      }
    },
 
@@ -112,7 +112,7 @@
            ]
          );
        }
-       return "";
+       return '';
    },
 
    setup() {
