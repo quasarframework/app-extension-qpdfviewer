@@ -4,7 +4,7 @@
  *
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
-function extendWebpack (cfg, { isClient, isServer }, api) {
+function extendWebpack (cfg) {
   cfg.module.rules.push({
     test: /\.worker\.js$/,
     use: {
@@ -13,13 +13,15 @@ function extendWebpack (cfg, { isClient, isServer }, api) {
   })
 }
 
-const extendConf = function (conf) {
+const extendConf = function (conf, api) {
   // make sure qpdfviewer boot file is registered
   conf.boot.push('~@quasar/quasar-app-extension-qpdfviewer/src/boot/qpdfviewer.js')
   console.log(` App Extension (qpdfviewer) Info: 'Adding qpdfviewer boot reference to your quasar.conf.js'`)
 
-  // make sure boot & component files transpile
-  conf.build.transpileDependencies.push(/quasar-app-extension-qpdfviewer[\\/]src/)
+  if (api.hasVite !== true) {
+    // make sure boot & component files transpile
+    conf.build.transpileDependencies.push(/quasar-app-extension-qpdfviewer[\\/]src/)
+  }
 
   // make sure qpdfviewer css goes through webpack to avoid ssr issues
   conf.css.push('~@quasar/quasar-app-extension-qpdfviewer/src/component/pdfviewer.sass')
@@ -36,6 +38,8 @@ module.exports = function (api) {
   // extend quasar.conf
   api.extendQuasarConf(extendConf)
 
-  // extend webpack config
-  api.extendWebpack(extendWebpack)
+  if (api.hasVite !== true) {
+    // extend webpack config
+    api.extendWebpack(extendWebpack)
+  }
 }
