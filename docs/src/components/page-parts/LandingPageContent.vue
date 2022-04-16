@@ -4,7 +4,6 @@
       <div class="landing-page__splash row justify-around items-center">
         <h2 class="text-weight-bold text-blue-2 q-pa-sm" style="padding-left: 20px;">PDF Viewer,<br>for your<br>Quasar apps</h2>
         <div class="q-pa-sm">
-          <!-- TODO: Jeff - need image before publishing -->
           <img
             src="/qpdfviewer.png"
             class="shadow-10 rounded-borders"
@@ -13,7 +12,10 @@
         </div>
       </div>
     </div>
-    <div class="full-width row justify-center q-pb-xl">
+    <div class="full-width column justify-center items-center text-center q-pb-xl q-gutter-sm text-blue-2" style="font-size: 2rem;">
+      Embed native HTML5 (browser only) or<br>PDFjs (browser, electron, capacitor and cordova) viewers
+    </div>
+    <div class="full-width row justify-center q-pb-xl q-gutter-sm">
       <q-btn
         to="/all-about-qpdfviewer/what-is-qpdfviewer"
         no-caps
@@ -22,6 +24,16 @@
         <div class="row justify-around items-center" style="width: 140px;">
           <div>Get started</div>
           <q-icon :name="biArrowRightCircle"/>
+        </div>
+      </q-btn>
+      <q-btn
+        to="/developing/using-qpdfviewer"
+        no-caps
+        class="bg-green-8"
+      >
+        <div class="row justify-around items-center" style="width: 140px;">
+          <div>Examples</div>
+          <q-icon :name="biArrowRightSquare"/>
         </div>
       </q-btn>
     </div>
@@ -33,7 +45,8 @@
 import { defineComponent, computed } from 'vue'
 import { useQuasar } from 'quasar'
 import {
-  biArrowRightCircle
+  biArrowRightCircle,
+  biArrowRightSquare
 } from '@quasar/extras/bootstrap-icons'
 
 export default defineComponent({
@@ -48,7 +61,8 @@ export default defineComponent({
 
     return {
       layout,
-      biArrowRightCircle
+      biArrowRightCircle,
+      biArrowRightSquare
     }
   }
 })
