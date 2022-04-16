@@ -4,14 +4,6 @@
  *
  * API: https://github.com/quasarframework/quasar/blob/master/app/lib/app-extension/IndexAPI.js
  */
-function extendWebpack (cfg) {
-  cfg.module.rules.push({
-    test: /\.worker\.js$/,
-    use: {
-      loader: 'worker-loader'
-    }
-  })
-}
 
 const extendConf = function (conf, api) {
   // make sure qpdfviewer boot file is registered
@@ -32,14 +24,17 @@ module.exports = function (api) {
   // quasar compatibility check
   api.compatibleWith('quasar', '^2.0.0')
 
+  if (api.hasVite === true) {
+    api.compatibleWith('@quasar/app-vite', '^1.0.0-alpha.0')
+  }
+  else {
+    // should be "@quasar/app-webpack" but that is not backward compatible
+    api.compatibleWith('@quasar/app', '^3.0.0')
+  }
+
   // register JSON api
   api.registerDescribeApi('QPdfviewer', './component/QPdfviewer.json')
 
   // extend quasar.conf
   api.extendQuasarConf(extendConf)
-
-  if (api.hasVite !== true) {
-    // extend webpack config
-    api.extendWebpack(extendWebpack)
-  }
 }
