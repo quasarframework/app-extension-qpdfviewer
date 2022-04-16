@@ -32,5 +32,8 @@
     "extension",
     "pdf",
     "viewer"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0"
+  }
 }
