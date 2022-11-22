@@ -72,7 +72,7 @@ export default defineComponent({
       return h('iframe', {
         // Change to new format style for Vue3
         class: ['q-pdfviewer__iframe'],
-        src: '/pdfjs/web/viewer.html?file=' + encodeURIComponent(props.src),
+        src: 'pdfjs/web/viewer.html?file=' + encodeURIComponent(props.src),
         width: '100%',
         height: '100%'
       }, [
