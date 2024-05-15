@@ -14,5 +14,5 @@
   },
   "author": "Jeff Galbraith <jeff@quasar.dev>",
   "license": "MIT",
-  "private": true
+  "private": false
 }
