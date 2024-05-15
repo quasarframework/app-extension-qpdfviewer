@@ -12,7 +12,7 @@
     "build-demo": "cd ./demo && yarn build && cd .. && cp ./_redirects ./demo/dist/spa && rm -rf ./docs && cp -r ./demo/dist/spa/. ./docs",
     "test": "echo \"No test specified\" && exit 0"
   },
-  "author": "Jeff Galbraith <jeff@quasar.dev>",
+  "author": "Barış Şener",
   "license": "MIT",
   "private": false
 }
