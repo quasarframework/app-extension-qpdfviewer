@@ -1,5 +1,5 @@
 {
-  "name": "qpdfviewer",
+  "name": "dfpdfviewer",
   "version": "1.0.0",
   "description": "QPdfviewer mono-repo",
   "workspaces": [
